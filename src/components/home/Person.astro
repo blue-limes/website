@@ -1,0 +1,15 @@
+---
+import type { Person } from "@/types/types";
+
+interface Props {
+  person: Person;
+}
+
+const { person } = Astro.props;
+---
+
+<div class="person">
+  <h3 class="person__name">{person.name}</h3>
+  <p class="person__role">{person.role}</p>
+  <p class="person__presentation">{person.presentation}</p>
+</div>
