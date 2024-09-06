@@ -1,49 +1,31 @@
-// /* barlow-300 - latin */
-// // @font-face {
-// //   font-family: "Barlow";
-// //   font-style: normal;
-// //   font-weight: 300;
-// //   src: local(""), url("/fonts/barlow-v12-latin-300.woff2") format("woff2"),
-// //     /* Chrome 26+, Opera 23+, Firefox 39+ */
-// //       url("/fonts/barlow-v12-latin-300.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-// // }
+/* dm-serif-display-latin-400-normal */
+@font-face {
+  font-family: "DM Serif Display";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src:
+    url(@fontsource/dm-serif-display/files/dm-serif-display-latin-400-normal.woff2)
+      format("woff2"),
+    url(@fontsource/dm-serif-display/files/dm-serif-display-latin-400-normal.woff)
+      format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
-// /* barlow-600 - latin */
-// @font-face {
-//   font-family: "Barlow";
-//   font-style: normal;
-//   font-weight: 600;
-//   src: local(""), url("/fonts/barlow-v12-latin-600.woff2") format("woff2"),
-//     /* Chrome 26+, Opera 23+, Firefox 39+ */
-//       url("/fonts/barlow-v12-latin-600.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-// }
-
-// /* barlow-700 - latin */
-// @font-face {
-//   font-family: "Barlow";
-//   font-style: normal;
-//   font-weight: 700;
-//   src: local(""), url("/fonts/barlow-v12-latin-700.woff2") format("woff2"),
-//     /* Chrome 26+, Opera 23+, Firefox 39+ */
-//       url("/fonts/barlow-v12-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-// }
-
-// /* barlow-800 - latin */
-// // @font-face {
-// //   font-family: "Barlow";
-// //   font-style: normal;
-// //   font-weight: 800;
-// //   src: local(""), url("/fonts/barlow-v12-latin-800.woff2") format("woff2"),
-// //     /* Chrome 26+, Opera 23+, Firefox 39+ */
-// //       url("/fonts/barlow-v12-latin-800.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-// // }
-
-// /* barlow-900 - latin */
-// @font-face {
-//   font-family: "Barlow";
-//   font-style: normal;
-//   font-weight: 900;
-//   src: local(""), url("/fonts/barlow-v12-latin-900.woff2") format("woff2"),
-//     /* Chrome 26+, Opera 23+, Firefox 39+ */
-//       url("/fonts/barlow-v12-latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-// }
+/* dm-serif-display-latin-400-italic */
+@font-face {
+  font-family: "DM Serif Display";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src:
+    url(@fontsource/dm-serif-display/files/dm-serif-display-latin-400-italic.woff2)
+      format("woff2"),
+    url(@fontsource/dm-serif-display/files/dm-serif-display-latin-400-italic.woff)
+      format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}

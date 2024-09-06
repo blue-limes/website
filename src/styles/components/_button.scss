@@ -1,0 +1,61 @@
+.button {
+  padding: 0.8rem 1.6rem;
+
+  border-radius: var(--border-radius-s);
+
+  // font-family: var(--heading-font);
+  // text-decoration: none;
+
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+
+    transform: translateY(0.1rem);
+  }
+
+  &--primary {
+    background-color: hsla(var(--persian-luxury-purple), 0.85);
+    box-shadow:
+      0 0.1rem 0.3rem hsla(var(--persian-luxury-purple), 0.025),
+      0 0.2rem 0.4rem hsla(var(--persian-luxury-purple), 0.05),
+      0 0.8rem 0.8rem hsla(var(--persian-luxury-purple), 0.08),
+      0 0.8rem 2.4rem hsla(var(--persian-luxury-purple), 0.1);
+
+    color: white;
+
+    &:hover {
+      background-color: var(--purple);
+    }
+  }
+
+  &--secondary {
+    background-color: hsla(var(--pink-ink), 0.85);
+    box-shadow:
+      0 0.1rem 0.3rem hsla(var(--pink-ink), 0.025),
+      0 0.2rem 0.4rem hsla(var(--pink-ink), 0.05),
+      0 0.8rem 0.8rem hsla(var(--pink-ink), 0.08),
+      0 0.8rem 2.4rem hsla(var(--pink-ink), 0.1);
+
+    // color: var(--);
+
+    &:hover {
+      background-color: var(--pink);
+    }
+  }
+
+  &--ternary {
+    background-color: hsla(var(--galactic-federation), 0.85);
+    box-shadow:
+      0 0.1rem 0.3rem hsla(var(--galactic-federation), 0.025),
+      0 0.2rem 0.4rem hsla(var(--galactic-federation), 0.05),
+      0 0.8rem 0.8rem hsla(var(--galactic-federation), 0.08),
+      0 0.8rem 2.4rem hsla(var(--galactic-federation), 0.1);
+
+    // color: var(--into-space);
+
+    &:hover {
+      background-color: var(--galactic);
+    }
+  }
+}

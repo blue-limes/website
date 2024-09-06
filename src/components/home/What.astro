@@ -1,11 +1,100 @@
+---
+import FeatureCard from "./FeatureCard.astro";
+import type { Feature } from "@/types/types";
+
+const features: Feature[] = [
+  {
+    name: "Authentication and User",
+    description:
+      "Our platform allows you to choose among different Authentication methods, from email and password to social login.",
+  },
+  {
+    name: "Payments",
+    description:
+      "You're ready to onboard users from day one, with Stripe Payments configured to your needs.",
+  },
+  {
+    name: "Emails",
+    description:
+      "Send transactional emails that look good on mobile and desktops, customized with to your brand colors and styles.",
+  },
+  {
+    name: "CRUD APIs",
+    description:
+      "Endpoints and user screens for standard, CRUD-only APIs allow you and your users to perform basic tasks.",
+  },
+  {
+    name: "Custom APIs",
+    description:
+      "We can develop business-logic-related APIs, so your project can continue progressing, for example while you're hiring your engineering team.",
+  },
+  {
+    name: "Tests",
+    description:
+      "Back-end and front-end tests ensure you the codebase is clean, and are a great starting point for future maintainers.",
+  },
+  {
+    name: "Internal documentation",
+    description:
+      "Our code is fully documented, giving developers who will continue the project everything they need to be efficient quickly.",
+  },
+  {
+    name: "User documentation platform",
+    description:
+      "We also deploy an easy-to-use documentation platform for your users, based on Astro Starlight.",
+  },
+  {
+    name: "CI/CD",
+    description:
+      "A fully configured CI/CD pipeline makes frequent deployments easy, safe, and fast.",
+  },
+  {
+    name: "Google Cloud project infra",
+    description:
+      "Your project is fully deployed and functional, running on Google Cloud, and ready to scale to as many users as you'll get.",
+  },
+  {
+    name: "Integration monitoring",
+    description:
+      "Monitor your infrastrure health with fully configured monitoring.",
+  },
+];
+---
+
 <section class="homeWhat">
   <div class="container">
     <div class="homeWhat__content">
-      <h2>We build and deploy your platform in weeks, not months</h2>
-      <p>
-        We can deploy our versatile and reliable in days, and immediately start
-        building your first APIs and the related user-facing interfaces.
-      </p>
+      <h2 class="text-center block-center">
+        We build and deploy your platform in weeks, not months
+      </h2>
+      <div class="homeWhat__product">
+        <div>
+          <p>
+            We can deploy our versatile and reliable platform in days, and
+            immediately start building your first APIs and the related
+            user-facing interfaces.
+          </p>
+          <p>
+            The Blue Limes foundations rely on a mix of proven open-source
+            products, internal tools, and industry-standard solutions.
+          </p>
+        </div>
+        <div>
+          <ul class="list-reset">
+            {features.map((f: Feature) => <FeatureCard feature={f} />)}
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<style lang="scss">
+  .homeWhat {
+    &__content {
+      h2 {
+        max-width: 30ch;
+      }
+    }
+  }
+</style>

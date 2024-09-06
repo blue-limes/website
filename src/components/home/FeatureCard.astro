@@ -1,0 +1,14 @@
+---
+import type { Feature } from "@/types/types";
+
+interface Props {
+  feature: Feature;
+}
+
+const { feature } = Astro.props;
+---
+
+<div class="feature">
+  <h3 class="feature__name">{feature.name}</h3>
+  <p class="feature__description">feature.description</p>
+</div>

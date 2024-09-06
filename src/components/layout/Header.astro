@@ -1,0 +1,60 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<header class="siteHeader">
+  <div class="container">
+    <div class="siteLogo">
+      <Icon name="limes" height="40" width="auto" />
+      <div><span>Blue</span> Limes</div>
+    </div>
+    <nav class="siteNav">
+      <ul class="list-reset">
+        <li><a href="/product/">Product</a></li>
+        <li>
+          <a class="button button--primary" href="/contact/">Let's chat</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style lang="scss">
+  .siteHeader {
+    padding-top: var(--space-small);
+    padding-bottom: var(-space-small);
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .siteLogo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+
+      color: var(--honey-teriyaki);
+      // font-family: var(--heading-font);
+      font-size: 2.4rem;
+      font-weight: 700;
+      // text-transform: uppercase;
+
+      div {
+        height: 1.2em;
+
+        span {
+          color: var(--terrestrial);
+          // font-weight: 400;
+        }
+      }
+    }
+
+    .siteNav {
+      ul {
+        display: flex;
+        gap: var(--space-small);
+      }
+    }
+  }
+</style>
