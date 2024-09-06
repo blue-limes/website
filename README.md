@@ -1,3 +1,3 @@
-# Unnamed Project (Website)
+# Blue Limes Website
 
-This is the website for unnamed project.
+This is the website for Blue Limes.
