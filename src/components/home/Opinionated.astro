@@ -1,28 +1,106 @@
 ---
 import type { Software } from "@/types/types";
 
+import StackCard from "./StackCard.astro";
+
 const bricks: Software[] = [
-  { name: "Python", role: "Backend", icon: "" },
-  { name: "Postgresql", role: "Database", icon: "" },
-  { name: "Google Cloud Platform", role: "Cloud Services", icon: "" },
-  { name: "GitHub", role: "Code and CI/CD", icon: "" },
-  { name: "Stripe", role: "Payments", icon: "" },
-  { name: "Astro", role: "Frontend", icon: "" },
-  { name: "Vue.js", role: "JavaScript Framework", icon: "" },
-  { name: "TypeScript", role: "JavaScript Superset", icon: "" },
+  { name: "Python", role: "Backend", icon: "python", height: 80 },
+  { name: "Postgresql", role: "Database", icon: "postgresql", height: 80 },
+  {
+    name: "Google Cloud Platform",
+    role: "Cloud Services",
+    icon: "google-cloud",
+    height: 80,
+  },
+  { name: "GitHub", role: "Code and CI/CD", icon: "github", height: 80 },
+  { name: "Stripe", role: "Payments", icon: "stripe", height: 80 },
+  { name: "Astro", role: "Frontend", icon: "astro", height: 80 },
+  { name: "Vue.js", role: "JavaScript Framework", icon: "vue", height: 80 },
+  {
+    name: "TypeScript",
+    role: "JavaScript Superset",
+    icon: "typescript",
+    height: 80,
+  },
 ];
 ---
 
 <section class="homeOpinionated">
   <div class="container">
     <div class="homeOpinionated__content">
-      <h2>We're opinionated</h2>
+      <h2 class="text-center">We're <span>opinionated</span></h2>
       <p>
         To ensure your product is up and running as quick as possible, we’ve
         already made a number of technical decisions. Our experience tells us
         they’re the good ones, and we’re confident they will help you reach your
         next goals quickly and won’t be holding you back in the future.
       </p>
+      <ul class="homeOpinionated__stack list-reset">
+        {
+          bricks.map((b: Software) => (
+            <li>
+              <StackCard brick={b} />
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </div>
 </section>
+
+<style lang="scss">
+  .homeOpinionated {
+    padding-top: var(--space-large);
+    padding-bottom: var(--space-large);
+
+    .container {
+      max-width: 70ch;
+    }
+
+    &__content {
+      h2 {
+        margin-bottom: var(--space-large);
+        span {
+          position: relative;
+
+          &::before {
+            content: "";
+
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            z-index: -1;
+
+            display: block;
+            height: 85%;
+            width: 97%;
+
+            background-image: linear-gradient(
+              to right,
+              transparent 0,
+              var(--pink) 5%,
+              var(--pink) 98%,
+              transparent 100%
+            );
+            border-radius: 8% 12% 6% 9%;
+            opacity: 40%;
+
+            transform: rotate(2deg);
+          }
+        }
+      }
+    }
+
+    &__stack {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+      margin-top: var(--space-large);
+
+      border: 0.1rem solid var(--grey-200);
+
+      > li {
+        border: 0.1rem solid var(--grey-200);
+      }
+    }
+  }
+</style>
