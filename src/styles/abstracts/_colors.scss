@@ -1,0 +1,50 @@
+:root {
+  // Nike Pegasus 41
+  // --mercury: hsl(160, 8%, 93%);
+  // --greybeard: hsl(48, 15%, 80%);
+  // --hidden-sea-glass: hsl(178, 40%, 67%);
+  // // --feverish-passion: hsl(336, 49%, 56%);
+  // // --blush-damour: hsl(338, 53%, 59%);
+  // --pansy: hsl(339, 79%, 65%);
+  // --umbra: hsl(0, 0%, 12%);
+
+  // Adobe Color Duck on the Ocean
+  // --into-space: hsla(60, 14%, 6%, 1);
+  // --elite-teal: hsla(174, 85%, 12%, 1);
+  // --terrestrial: hsla(166, 33%, 30%, 1);
+  // --gum-leaf: hsla(132, 28%, 72%, 1);
+  // --honey-teriyaki: hsla(25, 100%, 47%, 1);
+
+  // Reliably
+  --pink-ink: 341, 81%, 57%;
+  --persian-luxury-purple: 310, 64%, 32%;
+  --indigo: 267, 74%, 30%;
+  --galactic-federation: 269, 77%, 22%;
+  --obsidian-shard: 240, 71%, 5%;
+
+  --pink: hsla(var(--pink-ink), 1);
+  --purple: hsla(var(--persian-luxury-purple), 1);
+  --indie: hsla(var(--indigo, 1));
+  --galactic: hsla(var(--galactic-federation), 1);
+  --obsidian: hsla(var(--obsidian-shard), 1);
+
+  --grey-100: hsl(220, 27.27%, 97.84%);
+  --grey-200: hsl(230, 25%, 95.29%);
+  --grey-300: hsl(232.5, 22.22%, 92.94%);
+  --grey-400: hsl(234.55, 22.45%, 90.39%);
+  --grey-500: hsl(231.43, 22.58%, 87.84%);
+  --grey-600: hsl(234.55, 7.19%, 70%);
+  --grey-700: hsl(232.5, 3.25%, 51.76%);
+  --grey-800: hsl(240, 2.89%, 33.92%);
+  --grey-900: hsl(240, 3.7%, 15.88%);
+
+  --gray-100: var(--grey-100);
+  --gray-200: var(--grey-200);
+  --gray-300: var(--grey-300);
+  --gray-400: var(--grey-400);
+  --gray-500: var(--grey-500);
+  --gray-600: var(--grey-600);
+  --gray-700: var(--grey-700);
+  --gray-800: var(--grey-800);
+  --gray-900: var(--grey-900);
+}

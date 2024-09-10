@@ -1,0 +1,31 @@
+---
+import type { Feature } from "@/types/types";
+
+interface Props {
+  feature: Feature;
+}
+
+const { feature } = Astro.props;
+---
+
+<div class="feature">
+  <h3 class="feature__name">{feature.name}</h3>
+  <p class="feature__description">{feature.description}</p>
+</div>
+
+<style lang="scss">
+  .feature {
+    padding: var(--space-small);
+
+    background-color: var(--grey-100);
+    border: 0.1rem solid var(--grey-400);
+    border-radius: var(--border-radius-m);
+
+    font-size: 1.6rem;
+
+    &__name {
+      font-family: var(--body-font);
+      font-size: 1.6rem;
+    }
+  }
+</style>

@@ -1,0 +1,94 @@
+<section class="homeHero">
+  <div class="container">
+    <div class="homeHero__content">
+      <h1>
+        We help early-stage startups<br />
+        fast-track their MVP.
+      </h1>
+      <p>
+        The first months after you raise seed funding are crucial. You now need
+        to execute fast. If you're not coming form a software engineering
+        background -and sometimes even if you do- it means hiring a CTO and an
+        development team. While this process can take months, your product is
+        stalling.<br /> That's when we can help.
+      </p>
+      <div class="homeHero__action">
+        <a class="button button--primary" href="/contact/">Pick our brains</a>
+        <p>
+          Let's chat about your product, your current engineering organization,
+          or your funding challenges. We've been there, and we love to share
+          what we learned on the way.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .homeHero {
+    padding-top: var(--space-large);
+    padding-bottom: var(--space-large);
+
+    .container {
+      height: 72rem;
+    }
+
+    &__content {
+      margin-right: auto;
+      margin-left: auto;
+      padding: var(--space-large);
+      height: round(down, 100%, 5rem);
+      width: round(down, 100%, 5rem);
+
+      background-image: linear-gradient(
+          to left,
+          var(--grey-400) 0,
+          transparent 0.05rem,
+          transparent calc(100% - 0.05rem),
+          var(--grey-400) 100%
+        ),
+        linear-gradient(
+          to bottom,
+          var(--grey-400) 0,
+          transparent 0.05rem,
+          transparent calc(100% - 0.05rem),
+          var(--grey-400) 100%
+        );
+      background-size: 5rem 5rem;
+      border: 0.05rem solid var(--grey-400);
+
+      h1 {
+        text-align: center;
+        // text-transform: uppercase;
+      }
+
+      // padding-right: var(--space-medium);
+      p {
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 70ch;
+
+        text-align: justify;
+        text-align-last: center;
+      }
+    }
+
+    &__action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-small);
+      margin-top: var(--space-large);
+      margin-bottom: var(--space-large);
+
+      p {
+        max-width: 70ch;
+
+        color: var(--text-color-dim);
+        font-size: 1.6rem;
+        text-align: justify;
+        text-align-last: center;
+      }
+    }
+  }
+</style>

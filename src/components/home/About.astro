@@ -1,0 +1,65 @@
+---
+import type { Person } from "@/types/types";
+import PersonCard from "@/components/home/Person.astro";
+
+const team: Person[] = [
+  {
+    name: "Sylvain",
+    role: "Back-end development and infrastructure",
+    presentation:
+      "Before starting Blue Limes, Sylvain was a co-founder and CTO at Reliably. He has previously worked at a number of companies, both big and small, in various software engineering roles. He authored a book about Python development, and is the main developer and maintainer of the open source Chaos Toolkit.",
+  },
+  {
+    name: "Marc",
+    role: "Front-end development and design",
+    presentation:
+      "Before creating Blue Limes, Marc was the front-end and UX lead at Reliably. He has previously worked as a UX designer, front-end developer and project manager, mostly in agencies.",
+  },
+];
+---
+
+<section class="homeAbout">
+  <div class="container">
+    <div class="homeAbout__content">
+      <h2 class="text-center">About Us</h2>
+      <p class="text-center">
+        We’re a team of two, and we plan on staying small.
+      </p>
+      <p>
+        We’ve worked together in Reliably, which Sylvain co-founded, and of
+        which Marc was the first employee. There, we built (several times) the
+        Reliably SaaS product. Our last iteration was built quickly and offered
+        a great developer experience when adding features. That's when we
+        decided this platform might be our greatest product yet.
+      </p>
+    </div>
+    <div class="homeAbout__team">
+      {team.map((p: Person) => <PersonCard person={p} />)}
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .homeAbout {
+    padding-top: var(--sectionPadding);
+    padding-bottom: var(--space-large);
+
+    &__content {
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 70ch;
+
+      p:not(.text-center) {
+        text-align: justify;
+        text-align-last: center;
+      }
+    }
+
+    &__team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+      gap: var(--space-large);
+      margin-top: var(--space-large);
+    }
+  }
+</style>

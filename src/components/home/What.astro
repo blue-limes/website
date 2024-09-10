@@ -1,0 +1,204 @@
+---
+import FeatureCard from "./FeatureCard.astro";
+import ActivityCard from "./ActivityCard.astro";
+import type { Feature, Activity } from "@/types/types";
+
+const features: Feature[] = [
+  {
+    name: "Authentication and User Management",
+    description:
+      "Our platform allows you to choose among different Authentication methods, from email and password to social login.",
+  },
+  {
+    name: "Payments",
+    description:
+      "You're ready to onboard users from day one, with Stripe Payments configured to your needs.",
+  },
+  {
+    name: "Emails",
+    description:
+      "Send transactional emails that look good on mobile and desktops, customized with to your brand colors and styles.",
+  },
+  {
+    name: "CRUD APIs",
+    description:
+      "Endpoints and user screens for standard, CRUD-only APIs allow you and your users to perform basic tasks.",
+  },
+  {
+    name: "Custom APIs",
+    description:
+      "We can develop business-logic-related APIs, so your project can continue progressing, for example while you're hiring your engineering team.",
+  },
+  {
+    name: "Tests",
+    description:
+      "Back-end and front-end tests ensure you the codebase is clean, and are a great starting point for future maintainers.",
+  },
+  {
+    name: "Internal documentation",
+    description:
+      "Our code is fully documented, giving developers who will continue the project everything they need to be efficient quickly.",
+  },
+  {
+    name: "User documentation platform",
+    description:
+      "We also deploy an easy-to-use documentation platform for your users, based on Astro Starlight.",
+  },
+  {
+    name: "CI/CD",
+    description:
+      "A fully configured CI/CD pipeline makes frequent deployments easy, safe, and fast.",
+  },
+  {
+    name: "Google Cloud project infra",
+    description:
+      "Your project is fully deployed and functional, running on Google Cloud, and ready to scale to as many users as you'll get.",
+  },
+  {
+    name: "Integration monitoring",
+    description:
+      "Monitor your infrastrure health with fully configured monitoring.",
+  },
+];
+
+const agenda: Activity[] = [
+  {
+    day: 0,
+    title: "Let's work together!",
+    emoji: "🤝",
+  },
+  {
+    day: 1,
+    title: "Platform is deployed",
+    emoji: "🛠️",
+  },
+  {
+    day: 2,
+    title: "Authentication and user management",
+    emoji: "🔐",
+  },
+  {
+    day: 3,
+    title: "Stripe payments are set up",
+    emoji: "💳",
+  },
+  {
+    day: 4,
+    title: "Transactional emails are configured",
+    emoji: "📨",
+  },
+  {
+    day: 10,
+    title: "API endpoints are working",
+    emoji: "⚡",
+  },
+  {
+    day: 11,
+    title: "CI/CD pipeline is ready",
+    emoji: "🔁",
+  },
+  {
+    day: 12,
+    title: "Your platform is fully functional and deployed in production",
+    emoji: "🚀",
+  },
+];
+---
+
+<section class="homeWhat">
+  <div class="container">
+    <div class="homeWhat__content">
+      <div>
+        <h2>We build and deploy your platform in weeks, not months</h2>
+        <p>
+          We can deploy our versatile and reliable platform in days, and
+          immediately start building your first APIs and the related user-facing
+          interfaces.
+        </p>
+        <p>
+          It's complete with all the required foundational features (the ones
+          you don't want to spend time on), allowing you and your teams to jump
+          into developing business-related features (the fun ones).
+        </p>
+        <ol class="homeWhat__agenda list-reset">
+          {
+            agenda.map((a: Activity, index: number) => (
+              <li
+                style={`margin-top: calc(
+                  (${a.day - agenda[Math.max(index - 1, 0)].day}) * 3.6rem
+                )`}
+              >
+                <ActivityCard activity={a} />
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+      <div class="homeWhat__features">
+        <ul class="list-reset">
+          {
+            features.map((f: Feature) => (
+              <li>
+                <FeatureCard feature={f} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .homeWhat {
+    padding-top: var(--sectionPadding);
+    padding-bottom: var(--space-large);
+
+    &__content {
+      display: grid;
+      gap: var(--space-small);
+      grid-template-columns: repeat(2, 1fr);
+
+      h2 {
+        max-width: 30ch;
+      }
+    }
+
+    &__agenda {
+      position: relative;
+
+      margin-top: var(--space-large);
+
+      &::before {
+        content: "";
+
+        position: absolute;
+        top: 0;
+        left: 1.5rem;
+
+        display: block;
+        height: 100%;
+        width: 0.2rem;
+
+        background: repeating-linear-gradient(
+          to bottom,
+          var(--grey-300) 0,
+          var(--grey-300) 1rem,
+          transparent 1rem,
+          transparent 1.6rem
+        );
+        // background-size: 100%;
+        // background-repeat: repeat;
+        // background: red;
+      }
+    }
+
+    &__features {
+      ul {
+        > li + li {
+          margin-top: var(--space-small);
+        }
+      }
+    }
+  }
+</style>

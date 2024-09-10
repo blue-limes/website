@@ -1,0 +1,66 @@
+---
+import type { Activity } from "@/types/types";
+
+interface Props {
+  activity: Activity;
+}
+
+const { activity } = Astro.props;
+
+const hasEmoji: boolean = activity.emoji !== undefined;
+---
+
+<div class="activity">
+  <div class="activity__bullet">
+    {hasEmoji && <span class="activity__emoji">{activity.emoji}</span>}
+  </div>
+  <div class="activity__info">
+    <span class="activity__day">Day {activity.day}</span>
+    <span class="actvity__title">{activity.title}</span>
+  </div>
+</div>
+
+<style lang="scss">
+  .activity {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: 3.6rem 1fr;
+    gap: var(--space-small);
+    // padding: var(--space-small);
+
+    // background-color: var(--grey-100);
+    // border: 0.1rem solid var(--grey-400);
+    // border-radius: var(--border-radius-m);
+
+    font-size: 1.6rem;
+
+    // &__name {
+    //   font-family: var(--body-font);
+    //   font-size: 1.6rem;
+    // }
+
+    &__bullet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__emoji {
+      font-size: 3rem;
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__day {
+      color: var(--indie);
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+</style>
