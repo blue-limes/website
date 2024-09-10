@@ -1,5 +1,10 @@
 ---
+import { Image } from "astro:assets";
+
 import type { Person } from "@/types/types";
+
+import Marc from "@/assets/images/marc-perrien.jpg";
+import Sylvain from "@/assets/images/sylvain-hellegouarch.avif";
 
 interface Props {
   person: Person;
@@ -9,7 +14,185 @@ const { person } = Astro.props;
 ---
 
 <div class="person">
+  <div class={`person__photo person__photo--${person.name}`}>
+    {
+      person.name === "Marc" && (
+        <Image src={Marc} alt="A photo of Marc Perrien." />
+      )
+    }
+    {
+      person.name === "Sylvain" && (
+        <Image src={Sylvain} alt="A photo of Sylvain Hellegouarch." />
+      )
+    }
+    <div class="svg-wrap">
+      <svg
+        width="1865"
+        height="1865"
+        viewBox="0 0 1865 1865"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {
+          person.name === "Marc" && (
+            <path
+              style="fill:white;"
+              d="M932.46 0C417.47 0 0 417.47 0 932.46C0 1447.45 417.47 1864.92 932.46 1864.92C1447.45 1864.92 1864.92 1447.45 1864.92 932.46C1864.92 417.47 1447.44 0 932.46 0ZM1196.7 1028.36C1182.03 1084.17 1140.69 1137.91 1087.39 1157.76C1034.09 1177.61 968.84 1163.55 892.69 1144.25C817.09 1125.18 730.2 1101.02 688.08 1040.63C645.73 980.8 647.78 884.91 687.68 815.14C727.58 745.37 805.11 702.28 883.84 675.78C962.81 648.72 1043.15 638.63 1093.91 671.5C1144.51 703.98 1165.68 779.81 1182.35 846.86C1199.02 913.91 1211.21 972.16 1196.7 1028.36Z"
+            />
+          )
+        }
+        {
+          person.name === "Sylvain" && (
+            <path
+              d="M932.5.039C417.51.039.038 417.51.038 932.501c0 514.99 417.472 932.46 932.462 932.46 514.991 0 932.461-417.47 932.461-932.46C1864.961 417.51 1447.481.039 932.5.039Zm264.241 1028.362c-14.67 55.81-69.286 76.886-122.586 96.736-53.3 19.85-105.274 38.454-181.425 19.154-75.6-19.07-163.539.948-205.659-59.442-42.35-59.83-39.251-199.899.649-269.669 39.9-69.77 117.43-112.86 196.16-139.36 78.971-27.06 91.274 42.249 142.034 75.119 50.6 32.48 139.807 28.911 156.477 95.961 16.67 67.051 28.86 125.301 14.35 181.501Z"
+              style="fill:white;transform-origin:932.5px 932.5px"
+              transform="rotate(72 0 0)"
+            />
+          )
+        }
+      </svg>
+    </div>
+  </div>
   <h3 class="person__name">{person.name}</h3>
   <p class="person__role">{person.role}</p>
   <p class="person__presentation">{person.presentation}</p>
 </div>
+
+<style lang="scss">
+  .person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-small);
+
+    &__photo {
+      position: relative;
+
+      height: 30rem;
+      width: 30rem;
+      overflow: hidden;
+
+      &--Sylvain {
+        --time: 25s;
+        --amount: 8;
+        --scale-max: 1.1;
+      }
+
+      &--Marc {
+        --time: 32s;
+        --amount: 4;
+        --scale-max: 1;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+      }
+
+      svg {
+        width: 300%;
+        height: 300%;
+        margin-left: -100%;
+        margin-top: -100%;
+        position: absolute;
+        animation:
+          blob-skew calc(var(--time, 30s) * 0.5) linear 0s infinite,
+          blob-turn var(--time, 30s) linear infinite;
+        transform-origin: center;
+
+        path {
+          animation: blob-scale calc(var(--time, 30s) * 0.5) ease-in-out 0s
+            infinite;
+          transform-origin: center;
+        }
+      }
+    }
+
+    &__name {
+      margin-top: 0;
+    }
+  }
+
+  @keyframes blob-turn {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes blob-skew {
+    0% {
+      transform: skewY(0deg);
+    }
+    13% {
+      transform: skewY(calc((1.8deg) * var(--amount, 2)));
+    }
+    18% {
+      transform: skewY(calc((2.2deg) * var(--amount, 2)));
+    }
+    24% {
+      transform: skewY(calc((2.48deg) * var(--amount, 2)));
+    }
+    25% {
+      transform: skewY(calc((2.5deg) * var(--amount, 2)));
+    }
+    26% {
+      transform: skewY(calc((2.48deg) * var(--amount, 2)));
+    }
+    32% {
+      transform: skewY(calc((2.2deg) * var(--amount, 2)));
+    }
+    37% {
+      transform: skewY(calc((1.8deg) * var(--amount, 2)));
+    }
+    50% {
+      transform: skewY(0deg);
+    }
+    63% {
+      transform: skewY(calc((-1.8deg) * var(--amount, 2)));
+    }
+    68% {
+      transform: skewY(calc((-2.2deg) * var(--amount, 2)));
+    }
+    74% {
+      transform: skewY(calc((-2.48deg) * var(--amount, 2)));
+    }
+    75% {
+      transform: skewY(calc((-2.5deg) * var(--amount, 2)));
+    }
+    76% {
+      transform: skewY(calc((-2.48deg) * var(--amount, 2)));
+    }
+    82% {
+      transform: skewY(calc((-2.2deg) * var(--amount, 2)));
+    }
+    87% {
+      transform: skewY(calc((-1.8deg) * var(--amount, 2)));
+    }
+    100% {
+      transform: skewY(0deg);
+    }
+  }
+
+  @keyframes blob-scale {
+    0% {
+      transform: scaleX(0.9) scaleY(var(--scale-max, 1));
+    }
+    25% {
+      transform: scaleX(0.9) scaleY(0.9);
+    }
+    50% {
+      transform: scaleX(var(--scale-max, 1)) scaleY(0.9);
+    }
+    75% {
+      transform: scaleX(0.9) scaleY(0.9);
+    }
+    100% {
+      transform: scaleX(0.9) scaleY(var(--scale-max, 1));
+    }
+  }
+</style>

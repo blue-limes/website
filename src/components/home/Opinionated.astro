@@ -5,22 +5,22 @@ import StackCard from "./StackCard.astro";
 
 const bricks: Software[] = [
   { name: "Python", role: "Backend", icon: "python", height: 80 },
-  { name: "Postgresql", role: "Database", icon: "postgresql", height: 80 },
+  { name: "Postgresql", role: "Database", icon: "postgresql", height: 70 },
   {
-    name: "Google Cloud Platform",
+    name: "Google Cloud",
     role: "Cloud Services",
     icon: "google-cloud",
-    height: 80,
+    height: 70,
   },
-  { name: "GitHub", role: "Code and CI/CD", icon: "github", height: 80 },
-  { name: "Stripe", role: "Payments", icon: "stripe", height: 80 },
-  { name: "Astro", role: "Frontend", icon: "astro", height: 80 },
-  { name: "Vue.js", role: "JavaScript Framework", icon: "vue", height: 80 },
+  { name: "GitHub", role: "Code and CI/CD", icon: "github", height: 70 },
+  { name: "Stripe", role: "Payments", icon: "stripe", height: 40 },
+  { name: "Astro", role: "Frontend", icon: "astro", height: 70 },
+  { name: "Vue.js", role: "JavaScript Framework", icon: "vue", height: 70 },
   {
     name: "TypeScript",
     role: "JavaScript Superset",
     icon: "typescript",
-    height: 80,
+    height: 70,
   },
 ];
 ---
@@ -50,7 +50,7 @@ const bricks: Software[] = [
 
 <style lang="scss">
   .homeOpinionated {
-    padding-top: var(--space-large);
+    padding-top: var(--sectionPadding);
     padding-bottom: var(--space-large);
 
     .container {
