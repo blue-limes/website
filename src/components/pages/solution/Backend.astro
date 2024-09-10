@@ -1,0 +1,65 @@
+---
+import type { Software } from "@/types/types";
+
+import StackItem from "@/components/pages/solution/StackItem.astro";
+
+const backend: Software[] = [
+  {
+    name: "Python",
+    role: "Programming language",
+    description: [
+      "We use Python to build your application's back-end services, which <strong>handle the data and the business logic</strong>.",
+      "One of the most popular programming languages, Python is used by most of the world's largest organizations (the likes of Google, NASA, Amazon, and Spotify) while also being popular in the machine learning community. <strong>Its popularity ensures you won't struggle finding good engineers</strong> to maintain and grow your applications.",
+    ],
+    isOpenSource: true,
+    developers: ["Sylvain"],
+    icon: "python",
+    height: 80,
+  },
+  {
+    name: "PostgreSQL",
+    role: "Database system",
+    description: [
+      "PostgreSQL is how we store and access your data. We chose PostgreSQL because it is both <strong>widespread and efficient</strong>.",
+      "PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance. It is a de facto <strong>industry standard</strong>.",
+    ],
+    isOpenSource: true,
+    developers: ["Sylvain"],
+    icon: "postgresql",
+    height: 70,
+  },
+  {
+    name: "Stripe",
+    role: "Payments platform",
+    description: [
+      "We use Stripe to process payments from your clients. Stripe provides a number of payments model (single or recurring payments, monthly or annual...) that <strong>fit every business model</strong>",
+      "Stripe is a world leader in online payments, used by <strong>millions of companies</strong>. Using Stripe is the assurance your financial infrastructure is built on solid grounds from day one and can grow as big as you can dream.",
+    ],
+    isOpenSource: false,
+    developers: ["Sylvain"],
+    icon: "stripe",
+    height: 40,
+  },
+];
+---
+
+<section class="solutionSection">
+  <div class="container">
+    <div class="solutionSection__content">
+      <h2>Backend</h2>
+      <p>
+        Your SaaS application backend is where data is stored and transformed
+        before being fetched by the frontend of the application.
+      </p>
+    </div>
+    <ul class="solutionSection__list list-reset">
+      {
+        backend.map((item: Software) => (
+          <li>
+            <StackItem item={item} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

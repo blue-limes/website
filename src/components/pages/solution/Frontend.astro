@@ -1,0 +1,65 @@
+---
+import type { Software } from "@/types/types";
+
+import StackItem from "@/components/pages/solution/StackItem.astro";
+
+const frontend: Software[] = [
+  {
+    name: "Astro",
+    role: "Web framework",
+    description: [
+      "Astro is <strong>the foundation upon which we build</strong> our frontend. Its simple and robust model allows us to create a fast and reliable canvas upon which we build the more complex and dynamic components, using Vue.js.",
+      "Astro does not rely on any specific JavaScript framework, but supports them all. It means your development team will be able to built new components using not only Vue.js, but also <strong>React, Svelte, Angular</strong>, or just vanilla JS.",
+    ],
+    isOpenSource: true,
+    developers: ["Marc"],
+    icon: "astro",
+    height: 70,
+  },
+  {
+    name: "Vue.js",
+    role: "JavaScript framework",
+    description: [
+      "We use Vue.js to build the different components of your application's interface. It allows use to create a <strong>user-friendly experience for your customers</strong>.",
+      "Vue.js is altogether <strong>performant, versatile, and approachable</strong>. We think your teams will love using it. And if they don't, they can switch to React or Angular (or any other framework) without breaking anything.",
+    ],
+    isOpenSource: true,
+    developers: ["Marc"],
+    icon: "vue",
+    height: 70,
+  },
+  {
+    name: "TypeScript",
+    role: "JavaScript Superset",
+    description: [
+      "The front-end code is written using TypeScript. TypeScript helps us catch errors early, speeding up development and bringing trust to the codebase.",
+      "Originally developed at Microsoft, TypeScript is now an industry standard for clean, secure front-end JavaScript development.",
+    ],
+    isOpenSource: true,
+    developers: ["Marc"],
+    icon: "typescript",
+    height: 70,
+  },
+];
+---
+
+<section class="solutionSection">
+  <div class="container">
+    <div class="solutionSection__content">
+      <h2>Frontend</h2>
+      <p>
+        The frontend is the interface that fetches data from the backend and
+        displays it to your customers.
+      </p>
+    </div>
+    <ul class="solutionSection__list list-reset">
+      {
+        frontend.map((item: Software) => (
+          <li>
+            <StackItem item={item} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
