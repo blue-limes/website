@@ -21,3 +21,8 @@ export interface Activity {
   title: string;
   emoji?: string;
 }
+
+export interface Link {
+  label: string;
+  url: string;
+}
