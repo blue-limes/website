@@ -1,0 +1,73 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section class="solutionHero">
+  <div class="container">
+    <div class="solutionHero__content">
+      <h1>{title}</h1>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .solutionHero {
+    padding-top: var(--space-large);
+    padding-bottom: var(--space-large);
+
+    .container {
+      height: 32rem;
+    }
+
+    &__content {
+      margin-right: auto;
+      margin-left: auto;
+      padding: var(--space-large);
+      height: round(down, 100%, 5rem);
+      width: round(down, 100%, 5rem);
+
+      background-image: linear-gradient(
+          to left,
+          var(--grey-300) 0,
+          transparent 0.05rem,
+          transparent calc(100% - 0.05rem),
+          var(--grey-300) 100%
+        ),
+        linear-gradient(
+          to bottom,
+          var(--grey-300) 0,
+          transparent 0.05rem,
+          transparent calc(100% - 0.05rem),
+          var(--grey-300) 100%
+        );
+      background-size: 5rem 5rem;
+      border: 0.05rem solid var(--grey-200);
+
+      h1 {
+        text-align: center;
+      }
+    }
+
+    &__action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-small);
+      margin-top: var(--space-large);
+      margin-bottom: var(--space-large);
+
+      p {
+        max-width: 70ch;
+
+        color: var(--text-color-dim);
+        font-size: 1.6rem;
+        text-align: justify;
+        text-align-last: center;
+      }
+    }
+  }
+</style>
