@@ -4,13 +4,13 @@ import { Icon } from "astro-icon/components";
 
 <header class="siteHeader">
   <div class="container">
-    <div class="siteLogo">
+    <a href="/" class="siteLogo">
       <Icon name="limes" height="40" width="auto" />
       <div><span>Blue</span> Limes</div>
-    </div>
+    </a>
     <nav class="siteNav">
       <ul class="list-reset">
-        <li><a href="/our-idea/">Our idea</a></li>
+        <li><a href="/our-solution/">Our solution</a></li>
         <li>
           <a class="button button--primary" href="/contact/">Let's chat</a>
         </li>
@@ -40,10 +40,20 @@ import { Icon } from "astro-icon/components";
 
       svg {
         color: var(--pink);
+
+        transition: all 0.3s ease-in-out;
       }
 
       div {
         color: var(--text-color);
+      }
+
+      &:hover {
+        text-decoration: none;
+
+        svg {
+          color: var(--purple);
+        }
       }
     }
 

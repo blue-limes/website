@@ -146,6 +146,11 @@ const agenda: Activity[] = [
         </ul>
       </div>
     </div>
+    <div class="homeWhat__actions">
+      <a class="button button--tertiary" href="/our-solution/">
+        Discover our solution
+      </a>
+    </div>
   </div>
 </section>
 
@@ -187,9 +192,6 @@ const agenda: Activity[] = [
           transparent 1rem,
           transparent 1.6rem
         );
-        // background-size: 100%;
-        // background-repeat: repeat;
-        // background: red;
       }
     }
 
@@ -199,6 +201,12 @@ const agenda: Activity[] = [
           margin-top: var(--space-small);
         }
       }
+    }
+
+    &__actions {
+      display: flex;
+      justify-content: center;
+      margin-top: var(--space-large);
     }
   }
 </style>

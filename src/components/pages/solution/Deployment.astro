@@ -1,0 +1,54 @@
+---
+import type { Software } from "@/types/types";
+
+import StackItem from "@/components/pages/solution/StackItem.astro";
+
+const deployment: Software[] = [
+  {
+    name: "GitHub",
+    role: "Code hosting and CI/CD",
+    description: [
+      "GitHub is <strong>where your code lives</strong>. All the code we write is yours, from day one. It means your development teams will be able to edit it to keep on building your product, as soon as they're ready.",
+      "GitHub is also <strong>how we deploy your application to production</strong>. GitHub Actions are powerful enough to perform all required activities, and approachable enough that you won't need a dedicated team to keep up with modern best practices.",
+    ],
+    isOpenSource: false,
+    developers: ["Marc", "Sylvain"],
+    icon: "github",
+    height: 70,
+  },
+  {
+    name: "Google Cloud",
+    role: "Cloud services",
+    description: [
+      "We will deploy your application to Google Cloud. It's <strong>the same infrastructure that Google uses</strong> to run their own services: this brings you some room for growth!",
+      "And as the codebase is all yours, <strong>you're free to move your application to any other cloud provider</strong> that meets your needs.",
+    ],
+    isOpenSource: false,
+    developers: ["Sylvain"],
+    icon: "google-cloud",
+    height: 70,
+  },
+];
+---
+
+<section class="solutionSection">
+  <div class="container">
+    <div class="solutionSection__content">
+      <h2>Deployment & Infrastructure</h2>
+      <p>
+        When your application is ready to launch, we deploy it to Google Cloud<br
+        />
+        for unrivaled reliability and performance.
+      </p>
+    </div>
+    <ul class="solutionSection__list list-reset">
+      {
+        deployment.map((item: Software) => (
+          <li>
+            <StackItem item={item} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

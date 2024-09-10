@@ -17,14 +17,10 @@ const { person } = Astro.props;
 
 <div class="person">
   <div class={`person__photo person__photo--${person.name}`}>
-    {
-      person.name === "Marc" && (
-        <Image src={Marc} alt="A photo of Marc Perrien." />
-      )
-    }
+    {person.name === "Marc" && <Image src={Marc} alt="A photo of Marc." />}
     {
       person.name === "Sylvain" && (
-        <Image src={Sylvain} alt="A photo of Sylvain Hellegouarch." />
+        <Image src={Sylvain} alt="A photo of Sylvain." />
       )
     }
     <div class="svg-wrap">

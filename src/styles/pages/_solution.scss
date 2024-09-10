@@ -1,0 +1,27 @@
+.solutionSection {
+  padding-top: var(--space-large);
+  padding-bottom: var(--space-large);
+
+  &__content {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 70ch;
+
+    h2 {
+      text-align: center;
+    }
+
+    > p {
+      text-align: justify;
+      text-align-last: center;
+    }
+  }
+
+  .solutionSection__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-medium);
+    margin-top: var(--space-large);
+  }
+}

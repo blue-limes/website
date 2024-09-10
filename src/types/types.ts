@@ -7,6 +7,9 @@ export interface Person {
 export interface Software {
   name: string;
   role: string;
+  description?: string[];
+  isOpenSource?: boolean;
+  developers?: string[];
   icon: string;
   height: number;
 }

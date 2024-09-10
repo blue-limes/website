@@ -1,0 +1,154 @@
+---
+import type { Software } from "@/types/types";
+
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+import Marc from "@/assets/images/marc-perrien-120.jpg";
+import Sylvain from "@/assets/images/sylvain-hellegouarch-120.jpg";
+
+interface Props {
+  item: Software;
+}
+
+const { item } = Astro.props;
+---
+
+<div class="stackItem">
+  <div class="stackItem__icon">
+    <Icon name={item.icon} height={item.height} width="auto" />
+  </div>
+  <div class="stackItem__info">
+    <h3 class="stackItem__name text-center">
+      {item.name}
+    </h3>
+    <div class="stackItem__role text-center">
+      {item.role}
+      {
+        item.isOpenSource && (
+          <span class="stackItem__openSource">Open Source</span>
+        )
+      }
+    </div>
+    <div class="stackItem__description">
+      {
+        item.description &&
+          item.description.map((p: string) => <p set:html={p} />)
+      }
+    </div>
+    {
+      item.developers && (
+        <ul class="stackItem__developers list-reset">
+          {item.developers.map((d: string) => (
+            <li>
+              {d === "Marc" && <Image src={Marc} alt="Marc" title="Marc" />}
+              {d === "Sylvain" && (
+                <Image src={Sylvain} alt="Sylvain" title="Sylvain" />
+              )}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</div>
+
+<style lang="scss">
+  .stackItem {
+    height: 100%;
+    width: 36rem;
+
+    border: 0.1rem solid hsla(var(--galactic-federation), 0.05);
+    border-radius: var(--border-radius-l);
+    box-shadow:
+      0 0.1rem 0.3rem hsla(var(--galactic-federation), 0.025),
+      0 0.2rem 0.4rem hsla(var(--galactic-federation), 0.05),
+      0 0.8rem 0.8rem hsla(var(--galactic-federation), 0.08),
+      0 0.8rem 2.4rem hsla(var(--galactic-federation), 0.1);
+
+    font-size: 1.8rem;
+
+    &__icon {
+      display: grid;
+      place-content: center;
+      height: 16rem;
+      padding: var(--space-small);
+
+      background-color: hsla(var(--galactic-federation), 0.05);
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: calc(100% - 16rem);
+      padding: var(--space-small);
+
+      // background-color: hsla(var(--galactic-federation), 0.05);
+    }
+
+    &__role {
+      color: hsla(var(--galactic-federation), 0.85);
+      font-size: 1.6rem;
+    }
+
+    &__openSource {
+      padding: 0.2rem 0.4rem;
+
+      background-color: var(--pink);
+      border-radius: var(--border-radius-s);
+
+      color: var(--grey-100);
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    &__description {
+      padding-top: var(--space-small);
+      font-size: 1.6rem;
+    }
+
+    &__developers {
+      display: flex;
+      margin-top: auto;
+      padding-top: var(--space-small);
+      width: 100%;
+
+      li {
+        height: 6rem;
+        width: 6rem;
+        overflow: hidden;
+
+        border-radius: 50%;
+        box-shadow:
+          0 0.1rem 0.3rem hsla(var(--galactic-federation), 0.025),
+          0 0.2rem 0.4rem hsla(var(--galactic-federation), 0.05),
+          0 0.8rem 0.8rem hsla(var(--galactic-federation), 0.08),
+          0 0.8rem 2.4rem hsla(var(--galactic-federation), 0.1);
+
+        &:nth-child(2) {
+          transform: translateX(-50%);
+
+          transition: transform 0.3s ease-in-out;
+        }
+
+        img {
+          display: block;
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      &:hover {
+        li {
+          &:nth-child(2) {
+            transform: translateX(var(--space-small));
+
+            transition: transform 0.3s ease-in-out 0.3s;
+          }
+        }
+      }
+    }
+  }
+</style>
