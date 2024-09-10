@@ -10,7 +10,7 @@ import { Icon } from "astro-icon/components";
     </div>
     <nav class="siteNav">
       <ul class="list-reset">
-        <li><a href="/product/">Product</a></li>
+        <li><a href="/our-idea/">Our idea</a></li>
         <li>
           <a class="button button--primary" href="/contact/">Let's chat</a>
         </li>
@@ -34,26 +34,26 @@ import { Icon } from "astro-icon/components";
       align-items: center;
       gap: 0.6rem;
 
-      color: var(--honey-teriyaki);
-      // font-family: var(--heading-font);
+      font-family: var(--display-font);
       font-size: 2.4rem;
       font-weight: 700;
-      // text-transform: uppercase;
+
+      svg {
+        color: var(--pink);
+      }
 
       div {
-        height: 1.2em;
-
-        span {
-          color: var(--terrestrial);
-          // font-weight: 400;
-        }
+        color: var(--text-color);
       }
     }
 
     .siteNav {
+      display: flex;
+      align-items: center;
+
       ul {
         display: flex;
-        gap: var(--space-small);
+        gap: var(--space-medium);
       }
     }
   }

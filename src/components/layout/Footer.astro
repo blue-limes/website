@@ -1,0 +1,87 @@
+---
+import { Icon } from "astro-icon/components";
+
+import type { Link } from "@/types/types";
+
+const links: Link[] = [
+  {
+    label: "How it works",
+    url: "/our-idea/",
+  },
+  {
+    label: "Contact Us",
+    url: "/contact/",
+  },
+];
+---
+
+<footer class="siteFooter">
+  <div class="container">
+    <div class="siteFooter__logo">
+      <Icon name="limes" height="40" width="auto" />
+      <div><span>Blue</span> Limes</div>
+    </div>
+    <div class="siteFooter__nav">
+      <ul class="list-reset">
+        {
+          links.map((l: Link) => (
+            <li>
+              <a href={l.url}>{l.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="siteFooter__legal">
+      <a href="/legal/">Legal Notice</a>
+    </div>
+  </div>
+</footer>
+
+<style lang="scss">
+  .siteFooter {
+    padding-top: var(--space-large);
+    padding-bottom: var(--space-large);
+
+    background-color: var(--grey-900);
+
+    color: var(--grey-100);
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-medium);
+    }
+
+    &__logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      font-family: var(--display-font);
+      font-size: 3.6rem;
+    }
+
+    &__nav {
+      margin-top: var(--space-medium);
+
+      ul {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-medium);
+
+        font-size: 1.8rem;
+      }
+    }
+
+    &__legal {
+      display: flex;
+      justify-content: center;
+      margin-top: var(--space-medium);
+
+      color: var(--grey-500);
+      font-size: 1.6rem;
+    }
+  }
+</style>
