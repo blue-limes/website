@@ -28,7 +28,7 @@
     &__content {
       margin-right: auto;
       margin-left: auto;
-      padding: var(--space-large);
+      padding: var(--space-medium) 0;
       height: round(down, 100%, 5rem);
       width: round(down, 100%, 5rem);
 
@@ -49,12 +49,18 @@
       background-size: 5rem 5rem;
       border: 0.05rem solid var(--grey-200);
 
-      h1 {
-        text-align: center;
-        // text-transform: uppercase;
+      @media (min-width: 32rem) {
+        padding: var(--space-medium);
       }
 
-      // padding-right: var(--space-medium);
+      @media (min-width: 48rem) {
+        padding: var(--space-large);
+      }
+
+      h1 {
+        text-align: center;
+      }
+
       p {
         margin-right: auto;
         margin-left: auto;

@@ -35,13 +35,23 @@ import { Icon } from "astro-icon/components";
       gap: 0.6rem;
 
       font-family: var(--display-font);
-      font-size: 2.4rem;
+      font-size: 1.6rem;
       font-weight: 700;
 
+      @media (min-width: 32rem) {
+        font-size: 2.4rem;
+      }
+
       svg {
+        height: 2.4rem;
+
         color: var(--pink);
 
         transition: all 0.3s ease-in-out;
+
+        @media (min-width: 32rem) {
+          height: 4rem;
+        }
       }
 
       div {
@@ -60,6 +70,12 @@ import { Icon } from "astro-icon/components";
     .siteNav {
       display: flex;
       align-items: center;
+
+      font-size: 1.4rem;
+
+      @media (min-width: 32rem) {
+        font-size: inherit;
+      }
 
       ul {
         display: flex;

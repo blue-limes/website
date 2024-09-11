@@ -161,8 +161,12 @@ const agenda: Activity[] = [
 
     &__content {
       display: grid;
-      gap: var(--space-small);
-      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-large);
+      grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+
+      @media (min-width: 40rem) {
+        gap: var(--space-medium);
+      }
 
       h2 {
         max-width: 30ch;

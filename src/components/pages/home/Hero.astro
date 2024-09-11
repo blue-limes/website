@@ -10,8 +10,9 @@
         to execute fast. If you're not coming form a software engineering
         background -and sometimes even if you do- it means hiring a CTO and an
         development team. While this process can take months, your product is
-        stalling.<br /> That's when we can help.
+        stalling.
       </p>
+      <p>That's when we can help.</p>
       <div class="homeHero__action">
         <a class="button button--primary" href="/contact/">Pick our brains</a>
         <p>
@@ -36,7 +37,7 @@
     &__content {
       margin-right: auto;
       margin-left: auto;
-      padding: var(--space-large);
+      padding: var(--space-medium) 0;
       height: round(down, 100%, 5rem);
       width: round(down, 100%, 5rem);
 
@@ -57,9 +58,24 @@
       background-size: 5rem 5rem;
       border: 0.05rem solid var(--grey-200);
 
+      @media (min-width: 32rem) {
+        padding: var(--space-medium);
+      }
+
+      @media (min-width: 48rem) {
+        padding: var(--space-large);
+      }
+
       h1 {
         text-align: center;
-        // text-transform: uppercase;
+
+        br {
+          display: none;
+
+          @media (min-width: 64rem) {
+            display: block;
+          }
+        }
       }
 
       // padding-right: var(--space-medium);
