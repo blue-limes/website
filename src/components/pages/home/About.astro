@@ -30,7 +30,7 @@ const team: Person[] = [
         which Marc was the first employee. There, we built (several times) the
         Reliably SaaS product. Our last iteration was built quickly and offered
         a great developer experience when adding features. That's when we
-        decided this platform might be our greatest product yet.
+        realised this platform might be our greatest product yet.
       </p>
     </div>
     <div class="homeAbout__team">
@@ -50,8 +50,10 @@ const team: Person[] = [
       max-width: 70ch;
 
       p:not(.text-center) {
-        text-align: justify;
-        text-align-last: center;
+        @media (min-width: 40rem) {
+          text-align: justify;
+          text-align-last: center;
+        }
       }
     }
 
