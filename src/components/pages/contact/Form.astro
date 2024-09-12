@@ -1,0 +1,97 @@
+<form class="form" action="https://formspree.io/f/xdknvker" method="POST">
+  <div class="inputWrapper">
+    <label for="first-name">
+      First Name <span class="required">Required</span>
+    </label>
+    <input type="text" id="first-name" name="first-name" required />
+  </div>
+  <div class="inputWrapper">
+    <label for="last-name">
+      Last Name <span class="required">Required</span>
+    </label>
+    <input type="text" id="last-name" name="last-name" required />
+  </div>
+  <div class="inputWrapper">
+    <label for="email">
+      Email <span class="required">Required</span>
+    </label>
+    <input type="email" id="email" name="email" required />
+  </div>
+  <div class="inputWrapper">
+    <label for="company">
+      Company <span class="required">Required</span>
+    </label>
+    <input type="text" id="company" name="company" required />
+  </div>
+  <div class="inputWrapper">
+    <label for="message">
+      Tell us about your project <span class="required">Required</span>
+    </label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+  </div>
+  <div class="inputWrapper">
+    <button type="submit" class="button button--secondary">Send</button>
+  </div>
+</form>
+
+<style lang="scss">
+  form.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-medium);
+    margin-right: auto;
+    margin-bottom: var(--space-large);
+    margin-left: auto;
+    padding-right: var(--space-small);
+    padding-left: var(--space-small);
+    width: 100%;
+    max-width: 40rem;
+
+    .inputWrapper {
+      width: 100%;
+
+      label,
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        display: block;
+        width: 100%;
+      }
+
+      label {
+        display: flex;
+        align-items: baseline;
+
+        .required {
+          margin-left: auto;
+
+          color: var(--text-color-dim);
+          font-size: 1.4rem;
+          text-transform: uppercase;
+        }
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        background-color: var(--grey-100);
+        border: 0.1rem solid var(--grey-200);
+        border-radius: var(--border-radius-s);
+
+        &::selection {
+          background-color: hsl(var(--pink-ink), 0.3);
+        }
+
+        &:focus-visible {
+          outline: 0.2rem solid hsl(var(--pink-ink), 1);
+          outline-offset: 0.1rem;
+        }
+      }
+
+      input[type="text"],
+      input[type="email"] {
+        height: 3.6rem;
+      }
+    }
+  }
+</style>
