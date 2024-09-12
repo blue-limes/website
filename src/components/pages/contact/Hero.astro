@@ -1,23 +1,39 @@
-<section class="solutionHero">
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section class="contactHero">
   <div class="container">
-    <div class="solutionHero__content">
-      <h1>
-        A versatile and reliable stack,<br />
-        based on open-source solutions.
-      </h1>
+    <div class="contactHero__content">
+      <Icon name="limes" height="80" id="colorizedLimes" />
+      <h1>Contact Us!</h1>
       <p>
-        We've chosen a set of <strong
-          >efficient, mostly open-source, technologies</strong
-        > that will allow your project to thrive in its first months, and won't be
-        holding you back in the future. And when we went for SaaS solutions, we made
-        sure to pick <strong>best-in-class tools</strong>.
+        Get in touch to discuss your SaaS project, engineering challenges, or
+        your funding journey.
       </p>
+      <p>We love to share our experience with other founders.</p>
     </div>
   </div>
 </section>
 
+<script>
+  function colorizeLimes(target: HTMLElement) {
+    onmousemove = (e) => {
+      let h = e.x % 360;
+      let s = e.y % 100;
+      let hsl = `hsl(${h} ${s}% 50%)`;
+      target.style.color = hsl;
+    };
+  }
+
+  const colorizedLimes = document.getElementById("colorizedLimes");
+  if (colorizedLimes !== null) {
+    colorizeLimes(colorizedLimes);
+  }
+</script>
+
 <style lang="scss">
-  .solutionHero {
+  .contactHero {
     padding-top: var(--space-large);
     padding-bottom: var(--space-large);
 
@@ -26,6 +42,8 @@
     }
 
     &__content {
+      display: flex;
+      flex-direction: column;
       margin-right: auto;
       margin-left: auto;
       padding: var(--space-medium) 0;
@@ -55,6 +73,11 @@
 
       @media (min-width: 48rem) {
         padding: var(--space-large);
+      }
+
+      svg {
+        margin-top: var(--space-medium);
+        width: auto;
       }
 
       h1 {
