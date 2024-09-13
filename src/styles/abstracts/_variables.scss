@@ -44,15 +44,15 @@
   --custom-easing: cubic-bezier(0.175, 0.885, 0.32, 1.1);
 
   // Cookie Consent
-  --cc-button-primary-bg: var(--pink-500);
-  --cc-button-primary-hover-bg: var(--pink-600);
+  --cc-button-primary-bg: hsla(var(--pink-ink), 0.85);
+  --cc-button-primary-hover-bg: var(--pink);
   --cc-button-primary-color: white;
   --cc-button-secondary-bg: var(--grey-200);
   --cc-button-secondary-hover-bg: var(--grey-300);
   --cc-button-tertiary-bg: var(--grey-100);
   --cc-button-tertiary-hover-bg: var(--grey-200);
   --cc-button-color: var(var(--text-color-bright));
-  --cc-focus-border: var(--pink-500);
+  --cc-focus-border: hsla(var(--pink-ink), 0.85);
   --cc-nb-background: var(--grey-100);
   --cc-pc-container-background: white;
   --cc-pc-header-background: var(--grey-100);
@@ -62,7 +62,7 @@
   --cc-pc-tab-active-background: white;
   --cc-pc-tab-hover-background: var(--grey-300);
   --cc-pc-tab-border: var(--grey-400);
-  --cc-pc-footer-button-bg: var(--pink-500);
+  --cc-pc-footer-button-bg: hsla(var(--pink-ink), 0.85);
   --cc-pc-footer-button-color: white;
 
   @media (min-width: 60em) {

@@ -7,20 +7,94 @@ import Footer from "@/components/layout/Footer.astro";
 interface Props {
   title: string;
   description: string;
+  image?: URL | string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
+let canonical = new URL(Astro.url.pathname, Astro.site);
+const img = new URL(
+  Astro.props.image || "https://reliably.com/social.png",
+  Astro.site,
+);
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+    <script
+      type="text/javascript"
+      src="/js/cookie-consent/4.1.0/cookie-consent.js"
+      charset="UTF-8"></script>
+    <script type="text/javascript" charset="UTF-8">
+      document.addEventListener("DOMContentLoaded", function () {
+        cookieconsent.run({
+          notice_banner_type: "simple",
+          consent_type: "express",
+          palette: "light",
+          language: "en",
+          page_load_consent_levels: ["strictly-necessary"],
+          notice_banner_reject_button_hide: false,
+          preferences_center_close_button_hide: true,
+          page_refresh_confirmation_buttons: true,
+          website_name: "Blue Limes",
+          website_privacy_policy_url:
+            "https://bluelimes.dev/terms/privacy-cookies/",
+        });
+        let title = document.getElementById("cc-nb-title");
+        let text = document.getElementById("cc-nb-text");
+        let accept = document.querySelector(".cc-nb-okagree");
+        let decline = document.querySelector(".cc-nb-reject");
+        let pref = document.querySelector(".cc-nb-changep");
+        if (title !== null) {
+          title.innerHTML = "We have cookies";
+          text.innerHTML =
+            "We use cookies to analyze our website traffic, and to understand where our visitors are coming from.";
+          accept.innerHTML = "Accept";
+          decline.innerHTML = "Decline";
+          pref.innerHTML = "Preferences";
+        }
+      });
+    </script>
+
+    <!-- Google Analytics -->
+    <script
+      type="text/plain"
+      data-cookie-consent="tracking"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-JG8XSMBT45"></script>
+    <script type="text/plain" data-cookie-consent="tracking" lang="js">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-JG8XSMBT45");
+    </script>
+    <!-- end of Google Analytics-->
+
+    <title>{title} · Blue Limes</title>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} · Blue Limes</title>
+    <meta name="theme-color" content="#efdf0b" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="mask-icon" href="/favicon.svg" color="#efdf0b" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={img} />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={img} />
   </head>
   <body>
     <Header />
@@ -31,6 +105,6 @@ const { title, description } = Astro.props;
 
 <style>
   body {
-    background-color: var(--mercury);
+    background-color: white;
   }
 </style>
