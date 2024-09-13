@@ -7,20 +7,41 @@ import Footer from "@/components/layout/Footer.astro";
 interface Props {
   title: string;
   description: string;
+  image?: URL | string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
+let canonical = new URL(Astro.url.pathname, Astro.site);
+const img = new URL(
+  Astro.props.image || "https://reliably.com/social.png",
+  Astro.site,
+);
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <title>{title} · Blue Limes</title>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} · Blue Limes</title>
+    <meta name="theme-color" content="#efdf0b" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="mask-icon" href="/favicon.svg" color="#efdf0b" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={img} />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={img} />
   </head>
   <body>
     <Header />
@@ -31,6 +52,6 @@ const { title, description } = Astro.props;
 
 <style>
   body {
-    background-color: var(--mercury);
+    background-color: white;
   }
 </style>
