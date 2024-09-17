@@ -1,3 +1,7 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
 <section class="solutionHero">
   <div class="container">
     <div class="solutionHero__content">
@@ -12,63 +16,325 @@
         holding you back in the future. And when we went for SaaS solutions, we made
         sure to pick <strong>best-in-class tools</strong>.
       </p>
+      <div class="solutionHero__action">
+        <a href="/contact/" class="button button--tertiary" id="solutionButton">
+          Tell us about your project
+        </a>
+      </div>
+      <Icon
+        name="cube-a"
+        height="74"
+        width="64"
+        class="cube cube--A cube--A--1 js-cube-a"
+      />
+      <Icon
+        name="cube-a"
+        height="74"
+        width="64"
+        class="cube cube--A cube--A--2 js-cube-a"
+      />
+      <Icon
+        name="cube-a"
+        height="74"
+        width="64"
+        class="cube cube--A cube--A--3 js-cube-a"
+      />
+      <Icon
+        name="cube-a"
+        height="74"
+        width="64"
+        class="cube cube--A cube--A--4 js-cube-a"
+      />
+      <Icon
+        name="cube-b"
+        height="74"
+        width="64"
+        class="cube cube--B cube--B--1 js-cube-b"
+      />
+      <Icon
+        name="cube-b"
+        height="74"
+        width="64"
+        class="cube cube--B cube--B--2 js-cube-b"
+      />
+      <Icon
+        name="cube-b"
+        height="74"
+        width="64"
+        class="cube cube--B cube--B--3 js-cube-b"
+      />
+      <Icon
+        name="cube-b"
+        height="74"
+        width="64"
+        class="cube cube--B cube--B--4 js-cube-b"
+      />
+      <Icon
+        name="cube-c"
+        height="74"
+        width="64"
+        class="cube cube--C cube--C--1 js-cube-c"
+      />
+      <Icon
+        name="cube-c"
+        height="74"
+        width="64"
+        class="cube cube--C cube--C--2 js-cube-c"
+      />
+      <Icon
+        name="cube-c"
+        height="74"
+        width="64"
+        class="cube cube--C cube--C--3 js-cube-c"
+      />
+      <Icon
+        name="cube-c"
+        height="74"
+        width="64"
+        class="cube cube--C cube--C--4 js-cube-c"
+      />
+      <Icon
+        name="cube-d"
+        height="74"
+        width="64"
+        class="cube cube--D cube--D--1 js-cube-d"
+      />
+      <Icon
+        name="cube-d"
+        height="74"
+        width="64"
+        class="cube cube--D cube--D--2 js-cube-d"
+      />
+      <Icon
+        name="cube-d"
+        height="74"
+        width="64"
+        class="cube cube--D cube--D--3 js-cube-d"
+      />
     </div>
+
+    <script is:inline>
+      function calculateDistance(elem, mouseX, mouseY) {
+        // console.log("mouseX: ", mouseX);
+        // console.log("mouseY: ", mouseY);
+        // console.log("left: ", elem.offsetLeft);
+        // console.log("top: ", elem.offsetTop);
+        // console.log("height: ", elem.offsetHeight);
+        let a = mouseX - (elem.offsetLeft + elem.offsetWidth / 2);
+        let b = mouseY - 56 - (elem.offsetTop + elem.offsetHeight / 2);
+        // console.log("a: ", a);
+        // console.log("b: ", b);
+        return Math.floor(Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)));
+      }
+
+      window.addEventListener("DOMContentLoaded", (event) => {
+        const target = document.getElementById("solutionButton");
+        const brickA = document.querySelectorAll(".js-cube-a");
+        const brickB = document.querySelectorAll(".js-cube-b");
+        const brickC = document.querySelectorAll(".js-cube-c");
+        const brickD = document.querySelectorAll(".js-cube-d");
+
+        document.addEventListener("mousemove", function (e) {
+          mX = e.pageX;
+          mY = e.pageY;
+          distance = calculateDistance(target, mX, mY);
+          // console.log(distance);
+          // console.log(brickA);
+          if (distance < 20) {
+            distance = 0;
+          }
+
+          brickA.forEach((e) => {
+            // console.log(e);
+            e.style.transform = `translate(${-0.3 * distance}px, ${0.2 * distance}px)`;
+          });
+
+          brickB.forEach((e) => {
+            e.style.transform = `translate(${-0.1 * distance}px, ${-0.5 * distance}px)`;
+          });
+
+          brickC.forEach((e) => {
+            e.style.transform = `translate(${0.3 * distance}px, ${-0.2 * distance}px)`;
+          });
+
+          brickD.forEach((e) => {
+            e.style.transform = `translate(${0.2 * distance}px, ${0.2 * distance}px)`;
+          });
+        });
+      });
+    </script>
+
+    <style lang="scss">
+      .solutionHero {
+        position: relative;
+
+        padding-top: var(--space-large);
+        padding-bottom: var(--space-large);
+
+        .container {
+          height: 62rem;
+        }
+
+        &__content {
+          margin-right: auto;
+          margin-left: auto;
+          padding: var(--space-medium) 0;
+          height: round(down, 100%, 5rem);
+          width: round(down, 100%, 5rem);
+
+          background-image: linear-gradient(
+              to left,
+              var(--grey-300) 0,
+              transparent 0.05rem,
+              transparent calc(100% - 0.05rem),
+              var(--grey-300) 100%
+            ),
+            linear-gradient(
+              to bottom,
+              var(--grey-300) 0,
+              transparent 0.05rem,
+              transparent calc(100% - 0.05rem),
+              var(--grey-300) 100%
+            );
+          background-size: 5rem 5rem;
+          border: 0.05rem solid var(--grey-200);
+
+          @media (min-width: 32rem) {
+            padding: var(--space-medium);
+          }
+
+          @media (min-width: 48rem) {
+            padding: var(--space-large);
+          }
+
+          h1 {
+            text-align: center;
+          }
+
+          p {
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 70ch;
+
+            text-align: justify;
+            text-align-last: center;
+          }
+        }
+
+        &__action {
+          display: grid;
+          place-content: center;
+          padding-top: var(--space-large);
+          padding-bottom: var(--space-large);
+        }
+
+        .cube {
+          position: absolute;
+
+          &--A {
+            &--1 {
+              top: calc(100% - 82px);
+              left: calc(50% - 122px);
+              z-index: 8;
+            }
+
+            &--2 {
+              top: calc(100% - 65px);
+              left: calc(50% - 92px);
+              z-index: 9;
+            }
+
+            &--3 {
+              top: calc(100% - 47px);
+              left: calc(50% - 62px);
+              z-index: 9;
+            }
+
+            &--4 {
+              top: calc(100% - 65px);
+              left: calc(50% - 32px);
+              z-index: 8;
+            }
+          }
+
+          &--B {
+            &--1 {
+              top: calc(100% - 100px);
+              left: calc(50% - 92px);
+              z-index: 6;
+            }
+
+            &--2 {
+              top: calc(100% - 83px);
+              left: calc(50% - 62px);
+              z-index: 7;
+            }
+
+            &--3 {
+              top: calc(100% - 100px);
+              left: calc(50% - 32px);
+              z-index: 6;
+            }
+
+            &--4 {
+              top: calc(100% - 83px);
+              left: calc(50% - 2px);
+              z-index: 6;
+            }
+          }
+
+          &--C {
+            &--1 {
+              top: calc(100% - 118px);
+              left: calc(50% - 62px);
+              z-index: 5;
+            }
+
+            &--2 {
+              top: calc(100% - 135px);
+              left: calc(50% - 33px);
+              z-index: 4;
+            }
+
+            &--3 {
+              top: calc(100% - 153px);
+              left: calc(50% - 3px);
+              z-index: 3;
+            }
+
+            &--4 {
+              top: calc(100% - 117px);
+              left: calc(50% - 3px);
+              z-index: 4;
+            }
+          }
+
+          &--D {
+            &--1 {
+              top: calc(100% - 135px);
+              left: calc(50% + 27px);
+              z-index: 3;
+            }
+
+            &--2 {
+              top: calc(100% - 117px);
+              left: calc(50% + 57px);
+              z-index: 4;
+            }
+
+            &--3 {
+              top: calc(100% - 100px);
+              left: calc(50% + 28px);
+              z-index: 5;
+            }
+          }
+
+          @media (pointer: none) {
+            // hide on touch devices
+            display: none;
+          }
+        }
+      }
+    </style>
   </div>
 </section>
-
-<style lang="scss">
-  .solutionHero {
-    padding-top: var(--space-large);
-    padding-bottom: var(--space-large);
-
-    .container {
-      height: 52rem;
-    }
-
-    &__content {
-      margin-right: auto;
-      margin-left: auto;
-      padding: var(--space-medium) 0;
-      height: round(down, 100%, 5rem);
-      width: round(down, 100%, 5rem);
-
-      background-image: linear-gradient(
-          to left,
-          var(--grey-300) 0,
-          transparent 0.05rem,
-          transparent calc(100% - 0.05rem),
-          var(--grey-300) 100%
-        ),
-        linear-gradient(
-          to bottom,
-          var(--grey-300) 0,
-          transparent 0.05rem,
-          transparent calc(100% - 0.05rem),
-          var(--grey-300) 100%
-        );
-      background-size: 5rem 5rem;
-      border: 0.05rem solid var(--grey-200);
-
-      @media (min-width: 32rem) {
-        padding: var(--space-medium);
-      }
-
-      @media (min-width: 48rem) {
-        padding: var(--space-large);
-      }
-
-      h1 {
-        text-align: center;
-      }
-
-      p {
-        margin-right: auto;
-        margin-left: auto;
-        max-width: 70ch;
-
-        text-align: justify;
-        text-align-last: center;
-      }
-    }
-  }
-</style>

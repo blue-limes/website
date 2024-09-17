@@ -63,3 +63,14 @@ const backend: Software[] = [
     </ul>
   </div>
 </section>
+
+<style lang="scss">
+  .solutionSection__content {
+    padding-top: var(--space-large);
+
+    @media (pointer: none) {
+      // padding is not needed on touch devices as bricks are hidden
+      padding-top: 0;
+    }
+  }
+</style>
