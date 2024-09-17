@@ -328,6 +328,11 @@ import { Icon } from "astro-icon/components";
               z-index: 5;
             }
           }
+
+          @media (pointer: none) {
+            // hide on touch devices
+            display: none;
+          }
         }
       }
     </style>
