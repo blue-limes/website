@@ -68,7 +68,7 @@ const backend: Software[] = [
   .solutionSection__content {
     padding-top: var(--space-large);
 
-    @media (pointer: none) {
+    @media (pointer: none), (pointer: coarse) {
       // padding is not needed on touch devices as bricks are hidden
       padding-top: 0;
     }
