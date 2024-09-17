@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<section class="solutionHero" id="solutionHero">
+<section class="solutionHero">
   <div class="container">
     <div class="solutionHero__content">
       <h1>
@@ -17,7 +17,7 @@ import { Icon } from "astro-icon/components";
         sure to pick <strong>best-in-class tools</strong>.
       </p>
       <div class="solutionHero__action">
-        <a href="/contact/" class="button button--tertiary">
+        <a href="/contact/" class="button button--tertiary" id="solutionButton">
           Tell us about your project
         </a>
       </div>
@@ -25,105 +25,142 @@ import { Icon } from "astro-icon/components";
         name="cube-a"
         height="74"
         width="64"
-        class="cube cube--A cube--A--1"
+        class="cube cube--A cube--A--1 js-cube-a"
       />
       <Icon
         name="cube-a"
         height="74"
         width="64"
-        class="cube cube--A cube--A--2"
+        class="cube cube--A cube--A--2 js-cube-a"
       />
       <Icon
         name="cube-a"
         height="74"
         width="64"
-        class="cube cube--A cube--A--3"
+        class="cube cube--A cube--A--3 js-cube-a"
       />
       <Icon
         name="cube-a"
         height="74"
         width="64"
-        class="cube cube--A cube--A--4"
+        class="cube cube--A cube--A--4 js-cube-a"
       />
       <Icon
         name="cube-b"
         height="74"
         width="64"
-        class="cube cube--B cube--B--1"
+        class="cube cube--B cube--B--1 js-cube-b"
       />
       <Icon
         name="cube-b"
         height="74"
         width="64"
-        class="cube cube--B cube--B--2"
+        class="cube cube--B cube--B--2 js-cube-b"
       />
       <Icon
         name="cube-b"
         height="74"
         width="64"
-        class="cube cube--B cube--B--3"
+        class="cube cube--B cube--B--3 js-cube-b"
       />
       <Icon
         name="cube-b"
         height="74"
         width="64"
-        class="cube cube--B cube--B--4"
+        class="cube cube--B cube--B--4 js-cube-b"
       />
       <Icon
         name="cube-c"
         height="74"
         width="64"
-        class="cube cube--C cube--C--1"
+        class="cube cube--C cube--C--1 js-cube-c"
       />
       <Icon
         name="cube-c"
         height="74"
         width="64"
-        class="cube cube--C cube--C--2"
+        class="cube cube--C cube--C--2 js-cube-c"
       />
       <Icon
         name="cube-c"
         height="74"
         width="64"
-        class="cube cube--C cube--C--3"
+        class="cube cube--C cube--C--3 js-cube-c"
       />
       <Icon
         name="cube-c"
         height="74"
         width="64"
-        class="cube cube--C cube--C--4"
+        class="cube cube--C cube--C--4 js-cube-c"
       />
       <Icon
         name="cube-d"
         height="74"
         width="64"
-        class="cube cube--D cube--D--1"
+        class="cube cube--D cube--D--1 js-cube-d"
       />
       <Icon
         name="cube-d"
         height="74"
         width="64"
-        class="cube cube--D cube--D--2"
+        class="cube cube--D cube--D--2 js-cube-d"
       />
       <Icon
         name="cube-d"
         height="74"
         width="64"
-        class="cube cube--D cube--D--3"
+        class="cube cube--D cube--D--3 js-cube-d"
       />
     </div>
 
     <script is:inline>
+      function calculateDistance(elem, mouseX, mouseY) {
+        // console.log("mouseX: ", mouseX);
+        // console.log("mouseY: ", mouseY);
+        // console.log("left: ", elem.offsetLeft);
+        // console.log("top: ", elem.offsetTop);
+        // console.log("height: ", elem.offsetHeight);
+        let a = mouseX - (elem.offsetLeft + elem.offsetWidth / 2);
+        let b = mouseY - 56 - (elem.offsetTop + elem.offsetHeight / 2);
+        // console.log("a: ", a);
+        // console.log("b: ", b);
+        return Math.floor(Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)));
+      }
+
       window.addEventListener("DOMContentLoaded", (event) => {
-        const target = document.getElementById("solutionHero");
-        // const bullseye = target.
+        const target = document.getElementById("solutionButton");
+        const brickA = document.querySelectorAll(".js-cube-a");
+        const brickB = document.querySelectorAll(".js-cube-b");
+        const brickC = document.querySelectorAll(".js-cube-c");
+        const brickD = document.querySelectorAll(".js-cube-d");
 
-        // if (target && target.offsetTop > window.innerHeight - 100) {
-        // document.querySelector(".list-reset").scrollTop = target.offsetTop;
-        // }
+        document.addEventListener("mousemove", function (e) {
+          mX = e.pageX;
+          mY = e.pageY;
+          distance = calculateDistance(target, mX, mY);
+          // console.log(distance);
+          // console.log(brickA);
+          if (distance < 20) {
+            distance = 0;
+          }
 
-        // let menuTitles = document.querySelectorAll(".js-sidebarTitle");
-        // let menuLinks = document.querySelectorAll(".js-sidebarLinks");
+          brickA.forEach((e) => {
+            // console.log(e);
+            e.style.transform = `translate(${-0.3 * distance}px, ${0.2 * distance}px)`;
+          });
+
+          brickB.forEach((e) => {
+            e.style.transform = `translate(${-0.1 * distance}px, ${-0.5 * distance}px)`;
+          });
+
+          brickC.forEach((e) => {
+            e.style.transform = `translate(${0.3 * distance}px, ${-0.2 * distance}px)`;
+          });
+
+          brickD.forEach((e) => {
+            e.style.transform = `translate(${0.2 * distance}px, ${0.2 * distance}px)`;
+          });
+        });
       });
     </script>
 
