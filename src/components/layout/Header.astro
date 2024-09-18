@@ -1,18 +1,18 @@
 ---
-import { Icon } from "astro-icon/components";
+import Mark from "@/components/shared/Mark.astro";
 ---
 
 <header class="siteHeader">
   <div class="container">
     <a href="/" class="siteLogo">
-      <Icon name="limes" height="40" />
+      <Mark size="medium" animate={true} />
       <div><span>Blue</span> Limes</div>
     </a>
     <nav class="siteNav">
       <ul class="list-reset">
         <li><a href="/our-solution/">Our solution</a></li>
         <li>
-          <a class="button button--primary" href="/contact/">Let's chat</a>
+          <a class="button button--secondary" href="/contact/">Let's chat</a>
         </li>
       </ul>
     </nav>
@@ -22,7 +22,7 @@ import { Icon } from "astro-icon/components";
 <style lang="scss">
   .siteHeader {
     padding-top: var(--space-small);
-    padding-bottom: var(-space-small);
+    padding-bottom: var(--space-small);
 
     .container {
       display: flex;
@@ -38,19 +38,26 @@ import { Icon } from "astro-icon/components";
       font-size: 1.6rem;
       font-weight: 700;
 
-      @media (min-width: 32rem) {
-        font-size: 2.4rem;
+      @media (max-width: 32rem) {
+        :global(.markWrapper) {
+          height: 62px !important;
+          width: 92px !important;
+
+          transform: scale(0.5);
+        }
       }
 
-      svg {
-        height: 2.4rem;
+      @media (min-width: 32rem) {
+        font-size: 3rem;
+      }
 
-        color: var(--pink);
+      &:hover {
+        :global(.mark--isAnimated .cube--B) {
+          transform: translate(6px, -12px);
+        }
 
-        transition: all 0.3s ease-in-out;
-
-        @media (min-width: 32rem) {
-          height: 4rem;
+        :global(.mark--isAnimated .cube--A) {
+          transform: translate(-6px, 12px);
         }
       }
 
@@ -80,6 +87,20 @@ import { Icon } from "astro-icon/components";
       ul {
         display: flex;
         gap: var(--space-medium);
+
+        > li {
+          &:first-child {
+            display: none;
+
+            @media (min-width: 38rem) {
+              display: block;
+            }
+          }
+
+          a:not(.button) {
+            color: var(--text-color);
+          }
+        }
       }
     }
   }

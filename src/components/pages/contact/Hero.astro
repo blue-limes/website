@@ -1,11 +1,13 @@
 ---
 import { Icon } from "astro-icon/components";
+
+import Mark from "@/components/shared/Mark.astro";
 ---
 
 <section class="contactHero">
   <div class="container">
     <div class="contactHero__content">
-      <Icon name="limes" height="80" id="colorizedLimes" />
+      <Mark size="large" />
       <h1>Contact Us!</h1>
       <p>
         Get in touch to discuss your SaaS project, engineering challenges, or
@@ -17,19 +19,84 @@ import { Icon } from "astro-icon/components";
 </section>
 
 <script>
-  function colorizeLimes(target: HTMLElement) {
-    onmousemove = (e) => {
-      let h = e.x % 360;
-      let s = e.y % 100;
-      let hsl = `hsl(${h} ${s}% 50%)`;
-      target.style.color = hsl;
-    };
+  // function colorizeLimes(target: HTMLElement) {
+  //   onmousemove = (e) => {
+  //     let h = e.x % 360;
+  //     let s = e.y % 100;
+  //     let hsl = `hsl(${h} ${s}% 50%)`;
+  //     target.style.color = hsl;
+  //   };
+  // }
+
+  // const colorizedLimes = document.getElementById("colorizedLimes");
+  // if (colorizedLimes !== null) {
+  //   colorizeLimes(colorizedLimes);
+  // }
+</script>
+
+<script is:inline>
+  function calculateDistance(elem, mouseX, mouseY) {
+    let a = mouseX - (elem.offsetLeft + elem.offsetWidth / 2);
+    let b = mouseY - 94 - (elem.offsetTop + elem.offsetHeight / 2);
+    return Math.floor(Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)));
   }
 
-  const colorizedLimes = document.getElementById("colorizedLimes");
-  if (colorizedLimes !== null) {
-    colorizeLimes(colorizedLimes);
-  }
+  window.addEventListener("DOMContentLoaded", (event) => {
+    const content = document.querySelector(".contactHero__content");
+    const target = content.querySelector(".markWrapper");
+
+    document.addEventListener("mousemove", function (e) {
+      let zone = null;
+      // A | B | C
+      // D | E | F
+      // G | H | I
+      let h = window.innerHeight;
+      let w = window.innerWidth;
+      let mX = e.pageX;
+      let mY = e.pageY;
+      if (mX < w / 3) {
+        if (mY < h / 3) {
+          zone = "A";
+        } else if (mY < (2 * h) / 3) {
+          zone = "D";
+        } else {
+          zone = "G";
+        }
+      } else if (mX < (2 * w) / 3) {
+        if (mY < h / 3) {
+          zone = "B";
+        } else if (mY < (2 * h) / 3) {
+          zone = "E";
+        } else {
+          zone = "H";
+        }
+      } else {
+        if (mY < h / 3) {
+          zone = "C";
+        } else if (mY < (2 * h) / 3) {
+          zone = "F";
+        } else {
+          zone = "I";
+        }
+      }
+
+      if (zone) {
+        const allClasses = [
+          "markWrapper--hovered-A",
+          "markWrapper--hovered-B",
+          "markWrapper--hovered-C",
+          "markWrapper--hovered-D",
+          "markWrapper--hovered-E",
+          "markWrapper--hovered-F",
+          "markWrapper--hovered-G",
+          "markWrapper--hovered-H",
+          "markWrapper--hovered-I",
+        ];
+        target.classList.remove(...allClasses);
+        target.classList.add(`markWrapper--hovered-${zone}`);
+      }
+    });
+  });
 </script>
 
 <style lang="scss">
@@ -44,6 +111,7 @@ import { Icon } from "astro-icon/components";
     &__content {
       display: flex;
       flex-direction: column;
+      align-items: center;
       margin-right: auto;
       margin-left: auto;
       padding: var(--space-medium) 0;
@@ -75,9 +143,82 @@ import { Icon } from "astro-icon/components";
         padding: var(--space-large);
       }
 
-      svg {
-        margin-top: var(--space-medium);
-        width: auto;
+      :global(.markWrapper) {
+        transition: all 0.3s ease-in-out;
+      }
+
+      :global(.mark) {
+        filter: drop-shadow(0 0 20px rgb(0 0 0 / 0.5));
+
+        transition: all 0.3s ease-in-out;
+      }
+
+      :global(.markWrapper--hovered-A) {
+        transform-origin: right top;
+        transform: perspective(1000px) rotateX(20deg) rotateY(-20deg)
+          rotateZ(4deg);
+      }
+      :global(.markWrapper--hovered-A .mark) {
+        filter: drop-shadow(6px 6px 20px rgb(0 0 0 / 0.5));
+      }
+
+      :global(.markWrapper--hovered-B) {
+        transform-origin: center top;
+        transform: perspective(1000px) rotateX(20deg);
+      }
+      :global(.markWrapper--hovered-B .mark) {
+        filter: drop-shadow(0 6px 20px rgb(0 0 0 / 0.5));
+      }
+
+      :global(.markWrapper--hovered-C) {
+        transform-origin: left top;
+        transform: perspective(1000px) rotateX(20deg) rotateY(20deg)
+          rotateZ(-4deg);
+      }
+      :global(.markWrapper--hovered-C .mark) {
+        filter: drop-shadow(-6px 6px 20px rgb(0 0 0 / 0.5));
+      }
+
+      :global(.markWrapper--hovered-D) {
+        transform-origin: left center;
+        transform: perspective(1000px) rotateY(-20deg);
+      }
+      :global(.markWrapper--hovered-D .mark) {
+        filter: drop-shadow(6px 2px 20px rgb(0 0 0 / 0.5));
+      }
+
+      :global(.markWrapper--hovered-F) {
+        transform-origin: right center;
+        transform: perspective(1000px) rotateY(20deg);
+      }
+      :global(.markWrapper--hovered-F .mark) {
+        filter: drop-shadow(-6px 2px 20px rgb(0 0 0 / 0.5));
+      }
+
+      :global(.markWrapper--hovered-G) {
+        transform-origin: right bottom;
+        transform: perspective(1000px) rotateX(-20deg) rotateY(-20deg)
+          rotateZ(-4deg);
+      }
+      :global(.markWrapper--hovered-G .mark) {
+        filter: drop-shadow(6px -6px 20px rgb(0 0 0 / 0.5));
+      }
+
+      :global(.markWrapper--hovered-H) {
+        transform-origin: center bottom;
+        transform: perspective(1000px) rotateX(-20deg);
+      }
+      :global(.markWrapper--hovered-H .mark) {
+        filter: drop-shadow(0 -6px 20px rgb(0 0 0 / 0.5));
+      }
+
+      :global(.markWrapper--hovered-I) {
+        transform-origin: left bottom;
+        transform: perspective(1000px) rotateX(-20deg) rotateY(20deg)
+          rotateZ(4deg);
+      }
+      :global(.markWrapper--hovered-I .mark) {
+        filter: drop-shadow(-6px -6px 20px rgb(0 0 0 / 0.5));
       }
 
       h1 {

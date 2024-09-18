@@ -3,6 +3,8 @@ import { Icon } from "astro-icon/components";
 
 import type { Link } from "@/types/types";
 
+import Mark from "@/components/shared/Mark.astro";
+
 const links: Link[] = [
   {
     label: "How it works",
@@ -18,7 +20,7 @@ const links: Link[] = [
 <footer class="siteFooter">
   <div class="container">
     <div class="siteFooter__logo">
-      <Icon name="limes" height="40" />
+      <Mark size="large" grayscale={true} />
       <div><span>Blue</span> Limes</div>
     </div>
     <div class="siteFooter__nav">
@@ -72,6 +74,10 @@ const links: Link[] = [
         gap: var(--space-medium);
 
         font-size: 1.8rem;
+
+        a {
+          color: var(--grey-100);
+        }
       }
     }
 
@@ -80,8 +86,10 @@ const links: Link[] = [
       justify-content: center;
       margin-top: var(--space-medium);
 
-      color: var(--grey-500);
-      font-size: 1.6rem;
+      a {
+        color: var(--grey-500);
+        font-size: 1.6rem;
+      }
     }
   }
 </style>
