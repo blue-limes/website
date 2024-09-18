@@ -1,32 +1,36 @@
 :root {
-  --pink-ink: 341, 81%, 57%;
-  --persian-luxury-purple: 310, 64%, 32%;
-  --indigo: 267, 74%, 30%;
-  --galactic-federation: 269, 77%, 22%;
-  --obsidian-shard: 240, 71%, 5%;
+  // --pink-ink: 341, 81%, 57%;
+  // --persian-luxury-purple: 310, 64%, 32%;
+  // --indigo: 267, 74%, 30%;
+  // --galactic-federation: 269, 77%, 22%;
+  // --obsidian-shard: 240, 71%, 5%;
 
-  --pink: hsla(var(--pink-ink), 1);
-  --purple: hsla(var(--persian-luxury-purple), 1);
-  --indie: hsla(var(--indigo, 1));
-  --galactic: hsla(var(--galactic-federation), 1);
-  --obsidian: hsla(var(--obsidian-shard), 1);
+  // --pink: hsla(var(--pink-ink), 1);
+  // --purple: hsla(var(--persian-luxury-purple), 1);
+  // --indie: hsla(var(--indigo, 1));
+  // --galactic: hsla(var(--galactic-federation), 1);
+  // --obsidian: hsla(var(--obsidian-shard), 1);
 
+  --pink-base: 337, 78%, 66%;
   --pink-300: hsl(336, 70%, 91%);
   --pink-400: hsl(335, 74%, 82%);
   --pink-500: hsl(337, 78%, 66%);
   --pink-700: hsl(337, 71%, 38%);
   --pink-800: hsl(337, 91%, 22%);
 
+  --blue-base: 192, 57%, 40%;
   --blue-300: hsl(192, 57%, 80%);
   --blue-400: hsl(192, 57%, 60%);
   --blue-500: hsl(192, 57%, 40%);
   --blue-700: hsl(192, 77%, 27%);
   --blue-800: hsl(192, 92%, 15%);
 
+  --yellow-base: 48, 100%, 50%;
   --yellow-300: hsl(48, 100%, 83%);
   --yellow-400: hsl(48, 100%, 67%);
   --yellow-500: hsl(48, 100%, 50%);
 
+  --green-base: 168, 57%, 40%;
   --green-300: hsl(168, 57%, 80%);
   --green-400: hsl(168, 57%, 60%);
   --green-500: hsl(168, 57%, 40%);

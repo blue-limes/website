@@ -12,7 +12,7 @@ import Mark from "@/components/shared/Mark.astro";
       <ul class="list-reset">
         <li><a href="/our-solution/">Our solution</a></li>
         <li>
-          <a class="button button--primary" href="/contact/">Let's chat</a>
+          <a class="button button--secondary" href="/contact/">Let's chat</a>
         </li>
       </ul>
     </nav>
@@ -95,6 +95,10 @@ import Mark from "@/components/shared/Mark.astro";
             @media (min-width: 38rem) {
               display: block;
             }
+          }
+
+          a:not(.button) {
+            color: var(--text-color);
           }
         }
       }
