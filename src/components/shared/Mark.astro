@@ -1,11 +1,13 @@
 ---
 import { Icon } from "astro-icon/components";
+import type { boolean } from "astro/zod";
 
 interface Props {
   size?: number | string;
+  animate?: boolean;
 }
 
-const { size } = Astro.props;
+const { size, animate } = Astro.props;
 
 let sizeAsNumber: number = 1;
 if (size !== undefined) {
@@ -21,6 +23,8 @@ if (size !== undefined) {
     sizeAsNumber = 1;
   }
 }
+
+const isAnimated: boolean = animate === undefined ? false : true;
 ---
 
 <div
@@ -28,7 +32,7 @@ if (size !== undefined) {
   style={`height: calc(124px * ${sizeAsNumber}); width: calc(184px * ${sizeAsNumber});`}
 >
   <div
-    class="mark"
+    class:list={["mark", { "mark--isAnimated": isAnimated }]}
     style={`transform: scale(${sizeAsNumber}); margin-right: calc(-50% * ${sizeAsNumber}); margin-bottom: calc(-50% * ${sizeAsNumber});`}
   >
     <Icon
@@ -84,7 +88,7 @@ if (size !== undefined) {
 
 <style lang="scss">
   .markWrapper {
-    overflow: hidden;
+    // overflow: hidden;
 
     .mark {
       position: relative;
@@ -96,6 +100,8 @@ if (size !== undefined) {
 
       .cube {
         position: absolute;
+
+        transition: all 0.3s var(--custom-easing);
 
         &--A {
           &--1 {
@@ -143,6 +149,14 @@ if (size !== undefined) {
           &--4 {
             top: 17px;
             left: 120px;
+          }
+        }
+      }
+
+      &--isAnimated {
+        &:hover {
+          .cube--B {
+            transform: translate(12px, -24px);
           }
         }
       }

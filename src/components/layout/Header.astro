@@ -7,7 +7,7 @@ import Mark from "@/components/shared/Mark.astro";
 <header class="siteHeader">
   <div class="container">
     <a href="/" class="siteLogo">
-      <Mark size="medium" />
+      <Mark size="medium" animate={true} />
       <div><span>Blue</span> Limes</div>
     </a>
     <nav class="siteNav">
@@ -44,17 +44,15 @@ import Mark from "@/components/shared/Mark.astro";
         font-size: 3rem;
       }
 
-      // svg {
-      //   height: 2.4rem;
+      &:hover {
+        :global(.mark--isAnimated .cube--B) {
+          transform: translate(6px, -12px);
+        }
 
-      //   color: var(--pink);
-
-      //   transition: all 0.3s ease-in-out;
-
-      //   @media (min-width: 32rem) {
-      //     height: 4rem;
-      //   }
-      // }
+        :global(.mark--isAnimated .cube--A) {
+          transform: translate(-6px, 12px);
+        }
+      }
 
       div {
         color: var(--text-color);
