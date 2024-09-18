@@ -1,6 +1,4 @@
 ---
-import { Icon } from "astro-icon/components";
-
 import Mark from "@/components/shared/Mark.astro";
 ---
 
@@ -24,7 +22,7 @@ import Mark from "@/components/shared/Mark.astro";
 <style lang="scss">
   .siteHeader {
     padding-top: var(--space-small);
-    padding-bottom: var(-space-small);
+    padding-bottom: var(--space-small);
 
     .container {
       display: flex;
@@ -39,6 +37,15 @@ import Mark from "@/components/shared/Mark.astro";
       font-family: var(--display-font);
       font-size: 1.6rem;
       font-weight: 700;
+
+      @media (max-width: 32rem) {
+        :global(.markWrapper) {
+          height: 62px !important;
+          width: 92px !important;
+
+          transform: scale(0.5);
+        }
+      }
 
       @media (min-width: 32rem) {
         font-size: 3rem;
@@ -80,6 +87,16 @@ import Mark from "@/components/shared/Mark.astro";
       ul {
         display: flex;
         gap: var(--space-medium);
+
+        > li {
+          &:first-child {
+            display: none;
+
+            @media (min-width: 38rem) {
+              display: block;
+            }
+          }
+        }
       }
     }
   }
