@@ -5,9 +5,10 @@ import type { boolean } from "astro/zod";
 interface Props {
   size?: number | string;
   animate?: boolean;
+  grayscale?: boolean;
 }
 
-const { size, animate } = Astro.props;
+const { size, animate, grayscale } = Astro.props;
 
 let sizeAsNumber: number = 1;
 if (size !== undefined) {
@@ -25,6 +26,7 @@ if (size !== undefined) {
 }
 
 const isAnimated: boolean = animate === undefined ? false : true;
+const isGrayscale: boolean = grayscale === undefined ? false : true;
 ---
 
 <div
@@ -32,56 +34,60 @@ const isAnimated: boolean = animate === undefined ? false : true;
   style={`height: calc(124px * ${sizeAsNumber}); width: calc(184px * ${sizeAsNumber});`}
 >
   <div
-    class:list={["mark", { "mark--isAnimated": isAnimated }]}
+    class:list={[
+      "mark",
+      { "mark--isAnimated": isAnimated },
+      { "mark--isGrayscale": isGrayscale },
+    ]}
     style={`transform: scale(${sizeAsNumber}); margin-right: calc(-50% * ${sizeAsNumber}); margin-bottom: calc(-50% * ${sizeAsNumber});`}
   >
     <Icon
       name="cube-a"
       height="74"
       width="64"
-      class="cube cube--A cube--A--1 js-cube-a"
+      class="cube cube--A cube--A--1"
     />
     <Icon
       name="cube-a"
       height="74"
       width="64"
-      class="cube cube--A cube--A--2 js-cube-a"
+      class="cube cube--A cube--A--2"
     />
     <Icon
       name="cube-a"
       height="74"
       width="64"
-      class="cube cube--A cube--A--3 js-cube-a"
+      class="cube cube--A cube--A--3"
     />
     <Icon
       name="cube-a"
       height="74"
       width="64"
-      class="cube cube--A cube--A--4 js-cube-a"
+      class="cube cube--A cube--A--4"
     />
     <Icon
       name="cube-b"
       height="74"
       width="64"
-      class="cube cube--B cube--B--1 js-cube-b"
+      class="cube cube--B cube--B--1"
     />
     <Icon
       name="cube-b"
       height="74"
       width="64"
-      class="cube cube--B cube--B--2 js-cube-b"
+      class="cube cube--B cube--B--2"
     />
     <Icon
       name="cube-b"
       height="74"
       width="64"
-      class="cube cube--B cube--B--3 js-cube-b"
+      class="cube cube--B cube--B--3"
     />
     <Icon
       name="cube-b"
       height="74"
       width="64"
-      class="cube cube--B cube--B--4 js-cube-b"
+      class="cube cube--B cube--B--4"
     />
   </div>
 </div>
@@ -157,6 +163,10 @@ const isAnimated: boolean = animate === undefined ? false : true;
             transform: translate(12px, -24px);
           }
         }
+      }
+
+      &--isGrayscale {
+        filter: grayscale(1);
       }
     }
   }
