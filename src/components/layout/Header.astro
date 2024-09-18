@@ -1,11 +1,13 @@
 ---
 import { Icon } from "astro-icon/components";
+
+import Mark from "@/components/shared/Mark.astro";
 ---
 
 <header class="siteHeader">
   <div class="container">
     <a href="/" class="siteLogo">
-      <Icon name="limes" height="40" />
+      <Mark size="medium" />
       <div><span>Blue</span> Limes</div>
     </a>
     <nav class="siteNav">
@@ -39,20 +41,20 @@ import { Icon } from "astro-icon/components";
       font-weight: 700;
 
       @media (min-width: 32rem) {
-        font-size: 2.4rem;
+        font-size: 3rem;
       }
 
-      svg {
-        height: 2.4rem;
+      // svg {
+      //   height: 2.4rem;
 
-        color: var(--pink);
+      //   color: var(--pink);
 
-        transition: all 0.3s ease-in-out;
+      //   transition: all 0.3s ease-in-out;
 
-        @media (min-width: 32rem) {
-          height: 4rem;
-        }
-      }
+      //   @media (min-width: 32rem) {
+      //     height: 4rem;
+      //   }
+      // }
 
       div {
         color: var(--text-color);

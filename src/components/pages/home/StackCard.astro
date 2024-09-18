@@ -12,7 +12,7 @@ const { brick } = Astro.props;
 
 <div class="stackCard">
   <div class="stackCard__icon">
-    <Icon name={brick.icon} height={brick.height} width="auto" />
+    <Icon name={brick.icon} height={brick.height} width="" />
   </div>
   <div class="stackCard__info">
     <span class="stackCard__name text-center">{brick.name}</span>
@@ -30,6 +30,10 @@ const { brick } = Astro.props;
       display: grid;
       place-content: center;
       height: 8rem; // 80 px / 16
+
+      svg {
+        // width: auto;
+      }
     }
 
     &__info {

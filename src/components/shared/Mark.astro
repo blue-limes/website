@@ -1,0 +1,151 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  size?: number | string;
+}
+
+const { size } = Astro.props;
+
+let sizeAsNumber: number = 1;
+if (size !== undefined) {
+  if (typeof size === "number") {
+    sizeAsNumber = size;
+  } else if (size === "small") {
+    sizeAsNumber = 0.25;
+  } else if (size === "medium") {
+    sizeAsNumber = 0.5;
+  } else if (size === "large") {
+    sizeAsNumber = 0.75;
+  } else if (size === "original") {
+    sizeAsNumber = 1;
+  }
+}
+---
+
+<div
+  class="markWrapper"
+  style={`height: calc(124px * ${sizeAsNumber}); width: calc(184px * ${sizeAsNumber});`}
+>
+  <div
+    class="mark"
+    style={`transform: scale(${sizeAsNumber}); margin-right: calc(-50% * ${sizeAsNumber}); margin-bottom: calc(-50% * ${sizeAsNumber});`}
+  >
+    <Icon
+      name="cube-a"
+      height="74"
+      width="64"
+      class="cube cube--A cube--A--1 js-cube-a"
+    />
+    <Icon
+      name="cube-a"
+      height="74"
+      width="64"
+      class="cube cube--A cube--A--2 js-cube-a"
+    />
+    <Icon
+      name="cube-a"
+      height="74"
+      width="64"
+      class="cube cube--A cube--A--3 js-cube-a"
+    />
+    <Icon
+      name="cube-a"
+      height="74"
+      width="64"
+      class="cube cube--A cube--A--4 js-cube-a"
+    />
+    <Icon
+      name="cube-b"
+      height="74"
+      width="64"
+      class="cube cube--B cube--B--1 js-cube-b"
+    />
+    <Icon
+      name="cube-b"
+      height="74"
+      width="64"
+      class="cube cube--B cube--B--2 js-cube-b"
+    />
+    <Icon
+      name="cube-b"
+      height="74"
+      width="64"
+      class="cube cube--B cube--B--3 js-cube-b"
+    />
+    <Icon
+      name="cube-b"
+      height="74"
+      width="64"
+      class="cube cube--B cube--B--4 js-cube-b"
+    />
+  </div>
+</div>
+
+<style lang="scss">
+  .markWrapper {
+    overflow: hidden;
+
+    .mark {
+      position: relative;
+
+      height: 124px;
+      width: 184px;
+
+      transform-origin: top left;
+
+      .cube {
+        position: absolute;
+
+        &--A {
+          &--1 {
+            top: 17px;
+            left: 0;
+            z-index: 3;
+          }
+
+          &--2 {
+            top: 35px;
+            left: 30px;
+            z-index: 4;
+          }
+
+          &--3 {
+            top: 53px;
+            left: 60px;
+            z-index: 4;
+          }
+
+          &--4 {
+            top: 35px;
+            left: 90px;
+            z-index: 3;
+          }
+        }
+
+        &--B {
+          &--1 {
+            top: 0;
+            left: 30px;
+          }
+
+          &--2 {
+            top: 17px;
+            left: 60px;
+            z-index: 2;
+          }
+
+          &--3 {
+            top: 0;
+            left: 90px;
+          }
+
+          &--4 {
+            top: 17px;
+            left: 120px;
+          }
+        }
+      }
+    }
+  }
+</style>
