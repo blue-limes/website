@@ -1,0 +1,28 @@
+---
+export interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+<ul class="postTags list-reset">
+  {tags.map((tag) => <li>{tag}</li>)}
+</ul>
+
+<style lang="scss">
+  .postTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    li {
+      padding: 0.2rem 0.6rem;
+      background-color: var(--blue-300);
+      border-radius: var(--border-radius-s);
+
+      color: var(--blue-800);
+      font-size: 1.6rem;
+    }
+  }
+</style>

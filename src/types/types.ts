@@ -29,3 +29,31 @@ export interface Link {
   label: string;
   url: string;
 }
+
+export interface AstroPost {
+  slug: string;
+  body: string;
+  data: {
+    title: string;
+    tags: string[];
+    image: {
+      src: any;
+      alt: string;
+    };
+    authors: AstroAuthor[];
+    date: Date;
+    description: string;
+  };
+}
+
+export interface AstroAuthor {
+  id: string;
+  collection: "authors";
+  data: {
+    displayName: string;
+    role: string;
+    firstName?: string;
+    lastName?: string;
+    image: any;
+  };
+}

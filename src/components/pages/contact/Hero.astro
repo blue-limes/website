@@ -1,6 +1,4 @@
 ---
-import { Icon } from "astro-icon/components";
-
 import Mark from "@/components/shared/Mark.astro";
 ---
 
@@ -17,22 +15,6 @@ import Mark from "@/components/shared/Mark.astro";
     </div>
   </div>
 </section>
-
-<script>
-  // function colorizeLimes(target: HTMLElement) {
-  //   onmousemove = (e) => {
-  //     let h = e.x % 360;
-  //     let s = e.y % 100;
-  //     let hsl = `hsl(${h} ${s}% 50%)`;
-  //     target.style.color = hsl;
-  //   };
-  // }
-
-  // const colorizedLimes = document.getElementById("colorizedLimes");
-  // if (colorizedLimes !== null) {
-  //   colorizeLimes(colorizedLimes);
-  // }
-</script>
 
 <script is:inline>
   function calculateDistance(elem, mouseX, mouseY) {
@@ -112,8 +94,6 @@ import Mark from "@/components/shared/Mark.astro";
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-right: auto;
-      margin-left: auto;
       padding: var(--space-medium) 0;
       height: round(down, 100%, 5rem);
       width: round(down, 100%, 5rem);

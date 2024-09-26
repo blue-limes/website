@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import type { AstroAuthor } from "@/types/types";
+
+export interface Props {
+  authors: AstroAuthor[];
+}
+
+const { authors } = Astro.props;
+---
+
+<ul class="postAuthors list-reset">
+  {
+    authors.map((author: AstroAuthor) => (
+      <li>
+        <div class="author">
+          <div class="author__image">
+            <Image src={author.data.image} alt={author.data.displayName} />
+          </div>
+          <div class="author__info">
+            <div class="author__name">{author.data.displayName}</div>
+            <div class="author__role">{author.data.role}</div>
+          </div>
+        </div>
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  .postAuthors {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-medium);
+    padding-top: var(--space-medium);
+
+    .author {
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+
+      &__role {
+        color: var(--text-color-dim);
+      }
+    }
+  }
+</style>

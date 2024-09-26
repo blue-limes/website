@@ -133,14 +133,11 @@ import { Icon } from "astro-icon/components";
       mX = e.pageX;
       mY = e.pageY;
       distance = calculateDistance(target, mX, mY);
-      // console.log(distance);
-      // console.log(brickA);
       if (distance < 20) {
         distance = 0;
       }
 
       brickA.forEach((e) => {
-        // console.log(e);
         e.style.transform = `translate(${-0.3 * distance}px, ${0.2 * distance}px)`;
       });
 

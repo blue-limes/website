@@ -1,0 +1,149 @@
+---
+import { Image } from "astro:assets";
+import { getEntries } from "astro:content";
+import PostAuthors from "@/components/blog/PostAuthors.astro";
+import PostDate from "@/components/blog/PostDate.astro";
+import PostTags from "@/components/blog/PostTags.astro";
+import ArrowLink from "@/components/shared/ArrowLink.astro";
+import { addTrailingSlash, readingTime } from "@/utils/strings";
+import type { AstroPost, AstroAuthor } from "@/types/types";
+
+export interface Props {
+  post: AstroPost;
+}
+
+const { post } = Astro.props;
+
+const rt = readingTime(post.body);
+const url = addTrailingSlash(`/blog/${post.slug}`);
+
+const authors: AstroAuthor[] = await getEntries(post.data.authors);
+---
+
+<article class="postCard">
+  <header class="postCard__header">
+    <h2 class="postCard__title">
+      <a href={url}>
+        {post.data.title}
+      </a>
+    </h2>
+    <PostTags tags={post.data.tags} />
+  </header>
+  <div class="postCard__meta">
+    <div class="postCard__info">
+      <div class="postCard__date">
+        <strong><PostDate date={post.data.date} /></strong>
+      </div>
+      <div class="postCard__readingTime">
+        Reading time {rt} minute{rt > 1 && "s"}
+      </div>
+    </div>
+    <div class="postCard__authors">
+      <PostAuthors authors={authors} />
+    </div>
+  </div>
+  <div class="postCard__content">
+    <p class="postCard__description">
+      {post.data.description}
+    </p>
+    <p class="postCard__readMore">
+      <ArrowLink href={url}>Read more</ArrowLink>
+    </p>
+  </div>
+  <div class="postCard__image">
+    <Image src={post.data.image.src} alt={post.data.image.alt} />
+  </div>
+</article>
+
+<style lang="scss">
+  .postCard {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-small);
+
+    @media (min-width: 50em) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__header {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    &__title {
+      a {
+        color: var(--text-color-bright);
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &__tags {
+      color: var(--pink-500);
+      font-weight: 500;
+    }
+
+    &__meta {
+      // display: flex;
+      // flex-direction: column;
+      // gap: var(--space-medium);
+
+      // @media (min-width: 40em) and (max-width: 50em), (min-width: 70em) {
+      //   align-self: end;
+      //   flex-direction: row;
+      //   > * + * {
+      //     padding-left: var(--space-small);
+
+      //     border-left: 0.1rem solid var(--yellow-600);
+      //   }
+      // }
+    }
+
+    &__info {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-medium);
+
+      font-size: 1.8rem;
+    }
+
+    &__readingTime {
+      // display: none;
+      // Hidden until I find a way to pass Markdown source as a Prop
+      // This used to work 0.24 but doesn't in 0.26, and is needed
+      // to compute reading time.
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      max-width: 50ch;
+    }
+
+    &__readMore {
+      color: var(--pink-500);
+    }
+
+    &__image {
+      max-height: 40rem;
+      overflow: hidden;
+
+      border-radius: var(--border-radius-l);
+      box-shadow: var(--box-shadow-diffuse);
+      img {
+        position: relative;
+        top: 50%;
+        left: 50%;
+
+        display: block;
+        height: auto;
+        width: 100%;
+
+        object-fit: cover;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+</style>
