@@ -17,7 +17,7 @@ const { post } = Astro.props;
 const rt = readingTime(post.body);
 const url = addTrailingSlash(`/blog/${post.slug}`);
 
-const authors: AstroAuthor[] = await getEntries(post.data.authors);
+const authors = await getEntries(post.data.authors);
 ---
 
 <article class="postCard">
@@ -39,7 +39,7 @@ const authors: AstroAuthor[] = await getEntries(post.data.authors);
       </div>
     </div>
     <div class="postCard__authors">
-      <PostAuthors authors={authors} />
+      <PostAuthors authors={authors as unknown as AstroAuthor[]} />
     </div>
   </div>
   <div class="postCard__content">
@@ -71,6 +71,8 @@ const authors: AstroAuthor[] = await getEntries(post.data.authors);
     }
 
     &__title {
+      margin-bottom: 0;
+
       a {
         color: var(--text-color-bright);
 
@@ -86,19 +88,7 @@ const authors: AstroAuthor[] = await getEntries(post.data.authors);
     }
 
     &__meta {
-      // display: flex;
-      // flex-direction: column;
-      // gap: var(--space-medium);
-
-      // @media (min-width: 40em) and (max-width: 50em), (min-width: 70em) {
-      //   align-self: end;
-      //   flex-direction: row;
-      //   > * + * {
-      //     padding-left: var(--space-small);
-
-      //     border-left: 0.1rem solid var(--yellow-600);
-      //   }
-      // }
+      align-self: end;
     }
 
     &__info {
@@ -110,10 +100,7 @@ const authors: AstroAuthor[] = await getEntries(post.data.authors);
     }
 
     &__readingTime {
-      // display: none;
-      // Hidden until I find a way to pass Markdown source as a Prop
-      // This used to work 0.24 but doesn't in 0.26, and is needed
-      // to compute reading time.
+      padding-left: var(--space-small);
     }
 
     &__content {

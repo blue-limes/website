@@ -40,7 +40,7 @@ export interface AstroPost {
       src: any;
       alt: string;
     };
-    authors: AstroAuthor[];
+    authors: any;
     date: Date;
     description: string;
   };

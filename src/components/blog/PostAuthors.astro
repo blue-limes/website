@@ -34,10 +34,33 @@ const { authors } = Astro.props;
     gap: var(--space-medium);
     padding-top: var(--space-medium);
 
+    > li:nth-child(2n) {
+      padding-left: var(--space-small);
+
+      border-left: 0.1rem solid var(--grey-200);
+    }
+
     .author {
       display: flex;
       align-items: center;
+      gap: var(--space-small);
+
       font-size: 1.8rem;
+
+      &__image {
+        height: 8rem;
+        width: 8rem;
+        overflow: hidden;
+
+        border-radius: 50%;
+
+        img {
+          display: block;
+          height: 8rem;
+          width: 8rem;
+          object-fit: cover;
+        }
+      }
 
       &__role {
         color: var(--text-color-dim);

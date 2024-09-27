@@ -26,13 +26,16 @@ const blogCollection = defineCollection({
 
 const authorsCollection = defineCollection({
   type: "data",
-  schema: z.object({
-    displayName: z.string(),
-    role: z.string(),
-    firstName: z.string().optional(),
-    lastName: z.string().optional(),
-    image: z.string(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      displayName: z.string(),
+      role: z.string(),
+      firstName: z.string().optional(),
+      lastName: z.string().optional(),
+      image: image().refine((img) => img.width >= 120, {
+        message: "Cover image must be at least 120 pixels wide!",
+      }),
+    }),
 });
 
 // 3. Export a single `collections` object to register your collection(s)
