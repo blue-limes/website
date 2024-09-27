@@ -30,14 +30,20 @@ const { authors } = Astro.props;
 <style lang="scss">
   .postAuthors {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: var(--space-medium);
     padding-top: var(--space-medium);
 
-    > li:nth-child(2n) {
-      padding-left: var(--space-small);
+    @media (min-width: 42rem) and (max-width: 50rem), (min-width: 78rem) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
-      border-left: 0.1rem solid var(--grey-200);
+    > li:nth-child(2n) {
+      @media (min-width: 42rem) and (max-width: 50rem), (min-width: 78rem) {
+        padding-left: var(--space-small);
+
+        border-left: 0.1rem solid var(--grey-200);
+      }
     }
 
     .author {

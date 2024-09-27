@@ -67,11 +67,17 @@ const authors = await getEntries(post.data.authors);
 
     &__header {
       display: flex;
-      flex-direction: column-reverse;
+      flex-direction: column;
+
+      @media (min-width: 50rem) {
+        flex-direction: column-reverse;
+      }
     }
 
     &__title {
-      margin-bottom: 0;
+      @media (min-width: 50rem) {
+        margin-bottom: 0;
+      }
 
       a {
         color: var(--text-color-bright);
@@ -93,14 +99,16 @@ const authors = await getEntries(post.data.authors);
 
     &__info {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
       gap: var(--space-medium);
 
       font-size: 1.8rem;
     }
 
     &__readingTime {
-      padding-left: var(--space-small);
+      @media (min-width: 76rem) {
+        padding-left: var(--space-small);
+      }
     }
 
     &__content {
